@@ -1,0 +1,94 @@
+---
+title: Deployment
+description: From green CI to users — environments, rollbacks, and shipping discipline when agents can deploy faster than you can review.
+phase: "04"
+phaseTitle: Ship
+phaseOrder: 4
+order: 13
+status: shipped
+---
+
+import Figure from "../../components/Figure.astro";
+import Decision from "../../components/Decision.astro";
+
+## Principle
+
+Deployment is **the moment code becomes a promise to strangers**. AI and modern platforms make pushing easy; the scarce skill is knowing **what environment you are in**, **what changed**, and **how to undo it**.
+
+Shipping is not a one-time launch — it is a **rhythm**: preview → verify → production → watch → rollback or iterate.
+
+## The decision
+
+<Decision>
+  **Deploy automatically to preview** on every meaningful PR — strangers never see it, you see behavior in a real URL.
+
+  **Deploy to production** only through a human-approved gate (or CI you trust) after checks pass — agents do not own the production button.
+</Decision>
+
+<Figure id="DEC_014" caption="The path from merge to users — each step has an owner.">
+  <pre><code>  PR → CI (build, test, lint)
+        │
+        ▼
+  Preview deploy (auto)
+        │
+        ▼
+  Human approves ──► Production deploy
+        │
+        ▼
+  Watch (errors, core path) ──► rollback or fix forward</code></pre>
+</Figure>
+
+## Environments that matter
+
+| Environment | Purpose | Who touches it |
+|-------------|---------|----------------|
+| Local | Fast iteration | You + agents |
+| Preview | PR truth — real URL, fake or staging data | CI auto |
+| Staging | Optional — prod-like integrations | You, before big releases |
+| Production | Paying users, real data | Human gate |
+
+For early products, **preview + production** is often enough. Add staging when integrations are scary (payments, webhooks, email).
+
+## What to document once
+
+- **How to deploy** — one command or button; in README.
+- **Env vars** — names in repo; values in host secrets, never in chat.
+- **Migrations** — run order; who runs them; rollback story.
+- **Rollback** — revert deploy vs feature flag vs forward fix — pick default.
+
+## Workflow
+
+1. **CI required** on main — no direct pushes that skip checks (Chapter 12).
+2. **Preview URL** on PR — click core workflow before merge.
+3. **Merge** → production deploy (manual promote or auto if checks + policy allow).
+4. **Smoke prod** — sign in, pay test mode, critical path — five minutes.
+5. **Watch** — error rate, logs, support channel — first hour matters.
+6. **Post-deploy note** — what shipped, what to watch, link to PR.
+
+## AI and deployment
+
+- Agents may open PRs and trigger **preview** builds.
+- Agents do **not** set production secrets or toggle prod without human gate (Chapter 10).
+- Ask agents for **deploy runbooks** and **rollback steps** as markdown in `docs/` — you review.
+
+## Tooling
+
+Vercel, Netlify, Fly, Railway, Render — pick boring for your stack. GitHub Actions for CI. Feature flags (LaunchDarkly, env toggles) when rollback must be instant without revert.
+
+## Common mistakes
+
+- Production is the first place you run migrations.
+- No preview — "works locally" meets users.
+- Deploy Friday without watch plan.
+- Secrets in repo because the agent pasted them once.
+
+## Artifacts
+
+- [`templates/deploy-checklist.md`](https://github.com/Angelguirao/ai-native-product-building/tree/main/templates/deploy-checklist.md) — pre/post ship.
+- `docs/deploy.md` — env table, commands, rollback.
+
+## Further reading
+
+- Chapter 10 — Agentic development
+- Chapter 12 — Testing and maintainability
+- Chapter 14 — Analytics and feedback loops

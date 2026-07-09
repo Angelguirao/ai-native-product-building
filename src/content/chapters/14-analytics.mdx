@@ -1,0 +1,96 @@
+---
+title: Analytics and feedback loops
+description: Count what matters, close the loop from behavior to revision — without drowning in dashboards or vanity metrics.
+phase: "04"
+phaseTitle: Ship
+phaseOrder: 4
+order: 14
+status: shipped
+---
+
+import Figure from "../../components/Figure.astro";
+import Decision from "../../components/Decision.astro";
+
+## Principle
+
+Analytics is **observation at scale** — the Observe step of the inquiry loop applied after ship. AI can summarize funnels and cluster feedback; it cannot choose which metric **defines success** for your problem bet.
+
+A feedback loop is closed only when **behavior changes what you build next week**, not when it fills a Notion page.
+
+## The decision
+
+<Decision>
+  **Instrument** the core workflow and one north-star metric tied to your validation hypothesis (Chapter 04) — completion, return, payment, or time-to-value.
+
+  **Do not instrument** everything on day one — vanity pageviews and heatmaps without a decision rule are procrastination.
+</Decision>
+
+<Figure id="DEC_015" caption="Metrics serve decisions; decisions do not serve dashboards.">
+  <pre><code>  Problem bet → north-star metric
+        │
+        ▼
+  Events (minimal schema)
+        │
+        ▼
+  Weekly read ──► decision (iterate / hold / kill)
+        │
+        ▼
+  Ticket with hypothesis + falsifier</code></pre>
+</Figure>
+
+## Metric tiers
+
+| Tier | Examples | Use |
+|------|----------|-----|
+| North star | Weekly active completers, paid conversions | Strategy |
+| Diagnostic | Drop-off step, error rate, time to complete | Debugging |
+| Vanity | Raw pageviews, total signups | Context only |
+
+Pick **one** north star per phase. Change it deliberately when the bet changes.
+
+## Minimal event schema
+
+Name events for **verbs users do**, not implementation:
+
+- `workflow_started` · `workflow_completed` · `payment_succeeded` · `invite_sent`
+
+Properties: `user_id` (hashed if needed), `plan`, `source` — resist fifty custom fields until you need them.
+
+## Qualitative + quantitative
+
+| Source | AI helps | You own |
+|--------|----------|---------|
+| Product analytics | Summarize funnels, anomalies | Which drop-off to fix first |
+| Support / email | Theme clustering | Apology vs product fix |
+| Interviews | Synthesis with quotes | Who to talk to next |
+| Session replay | Find confusion patterns | Privacy policy, sampling |
+
+## Workflow
+
+1. **Link metrics to bet** — write north star in README or `docs/metrics.md`.
+2. **Instrument P0 path** before big marketing push.
+3. **Weekly review** — 30 minutes: north star, one diagnostic, one qualitative input.
+4. **Decision** — ship fix, run experiment, or document "hold."
+5. **Log signal** in ticket — date, number, action taken (feeds Chapter 15 iteration).
+
+## Tooling
+
+PostHog, Plausible, Mixpanel, Amplitude — or server logs + SQL early. Privacy: disclose analytics; respect opt-out where required.
+
+## Common mistakes
+
+- Dashboard before users — instrumentation theater.
+- Optimizing signup conversion while core workflow is broken.
+- Letting AI narrate trends without raw numbers attached.
+- Ignoring support inbox because charts look flat.
+
+## Artifacts
+
+- [`templates/metrics-review.md`](https://github.com/Angelguirao/ai-native-product-building/tree/main/templates/metrics-review.md) — weekly decision log.
+- Event dictionary — name, meaning, when fired.
+
+## Further reading
+
+- Chapter 04 — Validation before code
+- Chapter 13 — Deployment
+- Chapter 15 — Iteration
