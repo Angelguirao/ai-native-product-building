@@ -1,0 +1,94 @@
+---
+title: Validation before code
+description: Test the bet with the smallest honest experiment — smoke tests, concierge flows, and counts that beat a beautiful prototype.
+phase: "01"
+phaseTitle: Discover
+phaseOrder: 1
+order: 4
+status: shipped
+---
+
+import Figure from "../../components/Figure.astro";
+import Decision from "../../components/Decision.astro";
+
+## Principle
+
+Validation answers one question: **will a specific human take a specific action under real constraints?** Not "is this a good idea?" Not "can we build it?" Not "does the demo look finished?"
+
+The cheapest validation is often **not code** — a landing page with a sharp promise, a manual service behind a form, a paid pilot with a spreadsheet backend. AI helps you design and run these fast; it does not replace counting outcomes.
+
+## The decision
+
+<Decision>
+  **Validate with experiments** when you have a problem bet and need proof of demand, willingness to pay, or repeat behavior — before you invest in architecture.
+
+  **Skip to vibe or code** only when the risk is *shape* (Chapter 06) or *engineering truth* (auth, data, compliance) — not when the risk is still *whether anyone cares*.
+</Decision>
+
+<Figure id="DEC_007" caption="Escalate fidelity only when the cheaper test passed or clearly failed.">
+  <pre><code>  Problem bet
+        │
+        ▼
+  Smoke (hours) ──► fail ──► revise or kill
+        │ pass
+        ▼
+  Concierge (days) ──► fail ──► revise or kill
+        │ pass
+        ▼
+  Vibe prototype (Chapter 06) or thin code slice</code></pre>
+</Figure>
+
+## Experiment ladder
+
+| Level | What you build | What you measure | Typical time |
+|-------|----------------|------------------|--------------|
+| **Smoke** | Landing + CTA (waitlist, book call, pre-order) | Clicks, signups, reply rate | Hours–days |
+| **Concierge** | Manual delivery behind the same promise | Completion, return, payment | Days–weeks |
+| **Wizard of Oz** | UI that looks automated; you do the work | Time saved vs manual, errors | Weeks |
+| **Thin slice** | One vertical path in real code | Repeat use, support burden | Weeks+ |
+
+AI can draft copy, generate variants, and summarize results. **You** set the success threshold before you launch.
+
+## Workflow
+
+1. **Write the hypothesis** — "At least X of Y people will Z within N days."
+2. **Pre-register success and kill** — numbers, not feelings. Example: 5 waitlist emails from 100 targeted visitors in 7 days, or kill.
+3. **Pick the lowest rung** that could falsify the bet.
+4. **Ship the experiment** — one channel, one audience, one CTA. No feature creep.
+5. **Count** — spreadsheet: date, source, action, notes.
+6. **Revise the bet** — promote to shape (vibe), another experiment, or graveyard.
+
+## What AI is good for here
+
+- Landing copy variants from your problem one-pager
+- Outreach drafts to a defined list (you send; you track replies)
+- Parsing results into a table — still verify against raw exports
+- Post-mortem: "what did we learn?" with links to evidence
+
+## What AI cannot validate
+
+- Whether strangers trust you — that is behavior over time.
+- Whether unit economics work — you need real price and cost.
+- Whether the workflow survives Tuesday — repeat use beats launch day applause.
+
+## Tooling
+
+Carrd, Framer, or a single Astro page for smoke tests. Stripe payment links for paid concierge. Typeform or plain email. PostHog or Plausible for counts — or a manual tally if traffic is small.
+
+## Common mistakes
+
+- Building the product to validate demand — you validated your building speed, not the market.
+- Moving goalposts when numbers disappoint.
+- Measuring compliments at demo meetings instead of signed-up emails.
+- Running five experiments at once — you learn nothing about causality.
+
+## Artifacts
+
+- [`templates/validation-experiment.md`](https://github.com/Angelguirao/ai-native-product-building/tree/main/templates/validation-experiment.md) — hypothesis, threshold, channel, count sheet.
+- Graveyard entry when killed — what failed, what you'd try next time.
+
+## Further reading
+
+- Chapter 02 — Finding problems worth building
+- Chapter 03 — Discovery and research with AI
+- Chapter 06 — Vibe prototyping (after validation passes)

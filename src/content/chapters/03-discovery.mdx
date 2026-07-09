@@ -1,0 +1,96 @@
+---
+title: Discovery and research with AI
+description: Turn messy inputs into structured bets — interviews, clips, and public signal without letting synthesis replace observation.
+phase: "01"
+phaseTitle: Discover
+phaseOrder: 1
+order: 3
+status: shipped
+---
+
+import Figure from "../../components/Figure.astro";
+import Decision from "../../components/Decision.astro";
+
+## Principle
+
+Discovery is **compression with receipts**. You take hours of noise — calls, reviews, forum threads, your own notes — and distill what is **repeatable**, **observed**, and **disconfirmable**.
+
+AI is a librarian for this work, not a witness. It can cluster themes, draft follow-up questions, and flag contradictions. It cannot tell you what happened in the room when someone went quiet.
+
+## The decision
+
+<Decision>
+  **Use AI** after you have raw material: transcripts, clips, support tickets, interview notes. Ask for themes, quotes tagged to speakers, competing explanations, and "what would change your mind."
+
+  **Do not use AI** as the only research subject — synthetic users, hallucinated quotes, and "personas" without a source row are fiction dressed as rigor.
+</Decision>
+
+<Figure id="DEC_006" caption="Raw inputs stay primary; synthesis is a derived layer you can audit.">
+  <pre><code>  Raw (primary)
+    │  interviews · tickets · clips · notes
+    ▼
+  AI synthesis (derived, cite sources)
+    │  themes · contradictions · open questions
+    ▼
+  Human review (you mark agrees / disagrees)
+    ▼
+  Updated problem bet + next interview script</code></pre>
+</Figure>
+
+## Inputs worth feeding the model
+
+| Input | Good for | Weak alone |
+|-------|----------|------------|
+| Interview transcript | Quotes, pain language, workarounds | Sample size of one |
+| App store / G2 reviews | Recurring complaints, comparison set | Angry edge cases only |
+| Job posts | What companies pay to solve | Aspirational fluff |
+| Support tickets | Real failure modes | Biased to existing users |
+| Your session notes | What you noticed live | Memory without recording |
+
+Always keep **source links or timestamps**. If the synthesis cannot point back, discard it.
+
+## Workflow
+
+1. **Prep** — problem one-pager from Chapter 02. Write three questions that could falsify the bet.
+2. **Collect** — five conversations minimum; record with permission or take live notes in the person's words.
+3. **Synthesize** — paste raw text into AI with a strict prompt: *extract themes, list direct quotes with speaker labels, flag contradictions, do not invent.*
+4. **Audit** — read the raw again. Strike anything the model overstated. Add what it missed.
+5. **Update the bet** — who narrowed? workaround confirmed? new falsifier?
+6. **Decide** — validation experiment (Chapter 04), another interview round, or graveyard.
+
+## Prompt pattern (copy and adapt)
+
+```text
+You are a research librarian, not a strategist.
+Sources: [paste transcripts / notes]
+
+Output:
+1. Themes (max 5) — each with 2+ direct quotes and speaker
+2. Contradictions between sources
+3. Behaviors observed (past tense) vs opinions (future tense)
+4. Questions for the next interview
+5. What evidence would falsify the problem statement?
+
+Do not invent quotes. Say "insufficient evidence" when thin.
+```
+
+## Tooling
+
+NotebookLM for long PDFs and multi-doc chat. Claude / ChatGPT for synthesis passes. Otter or native phone recording for interviews. A single spreadsheet as the **source of truth** — one row per conversation, columns for signal strength.
+
+## Common mistakes
+
+- Synthesis before collection — elegant maps of nothing.
+- Treating AI themes as votes — three similar hallucinations are still zero humans.
+- Only interviewing friends who want to please you.
+- Losing provenance — pretty summary decks with no way to verify a claim.
+
+## Artifacts
+
+- [`templates/interview-synthesis.md`](https://github.com/Angelguirao/ai-native-product-building/tree/main/templates/interview-synthesis.md) — one page per research cycle.
+- Living **evidence table**: source · date · behavior observed · quote · strength (weak/medium/strong).
+
+## Further reading
+
+- Chapter 02 — Finding problems worth building
+- Chapter 04 — Validation before code
