@@ -1,0 +1,54 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Catalog from "../components/Catalog.astro";
+import { buildCatalogPhases, getHandbookStats } from "../lib/catalog";
+import { handbookVersion } from "../data/catalog";
+
+const phases = await buildCatalogPhases();
+const stats = await getHandbookStats();
+---
+
+<BaseLayout
+  title="Home"
+  description="A living handbook for building products when AI changes every step — principles, decisions, workflows, artifacts."
+  wide={true}
+  current="home"
+>
+  <p class="hero-eyebrow">DEC_000 · handbook v{handbookVersion} · open source</p>
+  <h1 class="hero-title">AI-Native<br />Product Building</h1>
+  <p class="hero-lede">
+    Not how to build AI products — how AI changes the process of building <em>any</em> product.
+    Decision frameworks that outlive the tools. Versioned in public like software.
+  </p>
+
+  <section class="panel">
+    <h2>How this works</h2>
+    <p>
+      Most material teaches tools in scattered pieces. A Lovable post here, a Cursor tip there, an agent demo somewhere else.
+      This handbook is the spine — organized by <strong>decisions founders and product engineers actually make</strong>,
+      not by vendor changelog.
+    </p>
+    <p>Each chapter runs the same loop: <strong>principle → decision → workflow → artifact</strong>. Tools go last and are allowed to age.</p>
+  </section>
+
+  <section class="progress-block">
+    <div class="progress-meta">
+      <span>{stats.shipped} / {stats.total} chapters shipped</span>
+      <span>v{handbookVersion}</span>
+      <span>updated {new Date().toISOString().slice(0, 10)}</span>
+    </div>
+    <div class="progress-bar" role="progressbar" aria-valuenow={stats.progress} aria-valuemin="0" aria-valuemax="100">
+      <span style={`width: ${stats.progress}%`}></span>
+    </div>
+  </section>
+
+  <h2 class="hero-eyebrow" style="margin-top: 2.5rem">Catalog</h2>
+  <p style="color: var(--muted); margin-top: -0.5rem">Tap a phase to expand. Shipped chapters are readable now.</p>
+  <Catalog phases={phases} />
+
+  <p style="margin-top: 2rem; font-size: 0.95rem; color: var(--muted)">
+    Inspired by the essay rhythm of <a href="https://www.makingsoftware.com/">Making Software</a>
+    and the catalog clarity of <a href="https://aiengineeringfromscratch.com/">AI Engineering from Scratch</a> —
+    adapted for product builders, in the warm voice of <a href="https://angelguirao.com/wiki">footnotes</a>.
+  </p>
+</BaseLayout>

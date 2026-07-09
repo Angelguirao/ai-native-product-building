@@ -1,0 +1,8 @@
+---
+const { label = "Decision" } = Astro.props;
+---
+
+<aside class="decision">
+  <p class="decision-label">{label}</p>
+  <slot />
+</aside>

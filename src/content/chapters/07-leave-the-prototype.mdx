@@ -1,0 +1,68 @@
+---
+title: When to leave the prototype
+description: Stay in vibe tools until you have proof — then own the code before the prototype owns you.
+phase: "02"
+phaseTitle: Shape
+phaseOrder: 2
+order: 7
+status: shipped
+---
+
+import Figure from "../../components/Figure.astro";
+import Decision from "../../components/Decision.astro";
+
+## Principle
+
+Vibe prototyping tools are **learning accelerators**, not **ownership layers**. They help you find shape fast. They punish you if you mistake generated UI for a billable, testable, multi-engineer product.
+
+Most teams switch too early (editing build config while still guessing the problem) or too late (the Lovable app *is* the product — except it cannot bill, test, or survive a second engineer).
+
+## The decision
+
+<Decision>
+  **Stay in vibe tools** until all three are true:
+
+  1. One **paying or committed** user (not a friend who said "cool").
+  2. One **workflow run ten times** — you know the steps, not just the demo path.
+  3. One **hard limitation** the tool cannot carry (auth edge case, billing, compliance, performance, real data model).
+
+  **Move to your own codebase** when the next experiment is about **reliability and revision**, not about **whether the idea deserves to exist**.
+</Decision>
+
+<Figure id="DEC_003" caption="The fork most founders hit between demo and product.">
+  <pre><code>  Idea
+    │
+    ▼
+ Vibe prototype ──(learn)──► still guessing? ──yes──► stay
+    │                           │
+    │                           no
+    │                           ▼
+    └──────────────────► own codebase + tests + deploy</code></pre>
+</Figure>
+
+## Workflow
+
+1. **Time-box** the prototype (days, not months). Name what you are trying to falsify.
+2. **Record** the workflow as a checklist, not a screen recording.
+3. When a limitation appears, **write it down** before switching tools — that note becomes the first engineering ticket.
+4. **Migrate vertically**: auth → data → payments → polish. Not "rewrite everything because AI said so."
+5. Keep the prototype URL as a **tombstone** — what you learned, not what you ship.
+
+## Tooling
+
+Lovable, Bolt, v0, Figma Make — same decision framework. Pick whichever gets you to the three exit criteria fastest. None of them are the destination.
+
+## Common mistakes
+
+- Shipping the prototype because stakeholders saw a polished demo.
+- Rewriting from scratch without carrying forward the **decisions** the prototype validated.
+- Waiting for "one more feature" in no-code because coding feels heavy — that is often fear of ownership, not product sense.
+
+## Artifacts
+
+- Migration checklist (add to `templates/`): data model, auth, billing, observability, CI — tick before cutover.
+
+## Further reading
+
+- Chapter 00 — Principles (decisions outlive tools)
+- Chapter 01 — Mindset (product vs engineering risk)

@@ -1,0 +1,19 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+type Props = {
+  current?: "home" | "catalog" | "about" | "glossary";
+};
+
+const { current } = Astro.props;
+---
+
+<header class="site-header">
+  <a class="site-brand" href="/">AI-Native Product Building</a>
+  <nav class="site-nav" aria-label="Handbook">
+    <a href="/catalog" aria-current={current === "catalog" ? "page" : undefined}>Catalog</a>
+    <a href="/glossary" aria-current={current === "glossary" ? "page" : undefined}>Glossary</a>
+    <a href="/about" aria-current={current === "about" ? "page" : undefined}>About</a>
+    <a href="https://angelguirao.com/" rel="noopener">mesh</a>
+  </nav>
+</header>

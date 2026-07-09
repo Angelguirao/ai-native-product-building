@@ -1,0 +1,40 @@
+---
+import type { CatalogPhase } from "../data/catalog";
+
+type Props = {
+  phases: CatalogPhase[];
+};
+
+const { phases } = Astro.props;
+---
+
+<section class="catalog" aria-label="Curriculum catalog">
+  {
+    phases.map((phase) => (
+      <details class="catalog-phase" open={phase.lessons.some((l) => l.status === "shipped")}>
+        <summary>
+          <span class="phase-label">{phase.id} — {phase.title}</span>
+          <span class="phase-count">
+            {phase.lessons.filter((l) => l.status === "shipped").length} shipped ·
+            {phase.lessons.length} total
+          </span>
+        </summary>
+        <div class="catalog-lessons">
+          {phase.lessons.map((lesson) =>
+            lesson.href ? (
+              <a class="catalog-lesson" href={lesson.href}>
+                <span class={`status status-${lesson.status}`}>{lesson.status}</span>
+                <span class="lesson-title">{lesson.title}</span>
+              </a>
+            ) : (
+              <div class={`catalog-lesson is-muted`}>
+                <span class={`status status-${lesson.status}`}>{lesson.status}</span>
+                <span class="lesson-title">{lesson.title}</span>
+              </div>
+            ),
+          )}
+        </div>
+      </details>
+    ))
+  }
+</section>

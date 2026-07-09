@@ -1,0 +1,40 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const terms = [
+  {
+    term: "Vibe prototype",
+    def: "A fast UI or flow built in a generation-first tool (Lovable, Bolt, v0) to learn shape — not an owned product.",
+  },
+  {
+    term: "Product engineer",
+    def: "Builder who optimizes for outcomes in the world: users, scope, trust, revision speed.",
+  },
+  {
+    term: "Agentic development",
+    def: "Workflows where agents plan, implement, and review with human gates at decisions — not unattended autopilot.",
+  },
+  {
+    term: "Decision framework",
+    def: "A durable when-X / when-Y rule that survives tool churn. The atomic unit of this handbook.",
+  },
+  {
+    term: "Artifact",
+    def: "Spec, checklist, test, or template that makes a decision re-readable later — judgment with a trail.",
+  },
+];
+---
+
+<BaseLayout title="Glossary" description="Terms used across the handbook." current="glossary">
+  <p class="hero-eyebrow">Reference</p>
+  <h1 class="hero-title">Glossary</h1>
+
+  <dl class="glossary-list">
+    {terms.map((item) => (
+      <>
+        <dt>{item.term}</dt>
+        <dd>{item.def}</dd>
+      </>
+    ))}
+  </dl>
+</BaseLayout>

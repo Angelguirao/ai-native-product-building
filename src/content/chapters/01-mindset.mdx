@@ -1,0 +1,63 @@
+---
+title: Mindset — product engineer vs software engineer
+description: The role shift when building is cheap — taste, judgment, and leverage matter more than syntax depth.
+phase: "00"
+phaseTitle: Foundations
+phaseOrder: 0
+order: 1
+status: shipped
+---
+
+import Figure from "../../components/Figure.astro";
+import Decision from "../../components/Decision.astro";
+
+## Principle
+
+When generation is cheap, **the bottleneck moves up the stack** — from typing code to choosing what deserves to exist, how it should feel, and what must stay human-owned.
+
+A **product engineer** optimizes for outcomes in the world: users, revenue, trust, revision speed. A **software engineer** optimizes for correctness inside the system: APIs, tests, performance. AI-native builders sit at the intersection — and must not confuse the two chairs.
+
+## The decision
+
+<Decision>
+  **Think product engineer first** when the risk is building the wrong thing, shipping the wrong scope, or mistaking a demo for trust.
+
+  **Think software engineer first** when the risk is data loss, payment errors, security, or unmaintainable architecture — even if AI wrote the first draft.
+</Decision>
+
+<Figure id="DEC_002" caption="Breadth of judgment vs depth of implementation — both matter, not always in the same person at the same hour.">
+  <pre><code>Product engineer     →  what / why / for whom
+Software engineer    →  how / safely / for how long
+AI-native builder    →  orchestrates both, owns the seam</code></pre>
+</Figure>
+
+## What humans should own
+
+| Own | Share with AI | Delegate to AI |
+|-----|----------------|----------------|
+| Problem selection | Discovery synthesis | First-draft research |
+| Taste and UX calls | Layout exploration | Boilerplate UI |
+| Pricing and scope | Option comparison | Scaffold code |
+| Architecture bets | Trade-off writeups | Repetitive implementation |
+| What ships this week | Test ideas | Formatter-level edits |
+
+## Workflow
+
+1. Write the **user outcome** in one sentence before opening any tool.
+2. Ask: is today's risk **product** or **engineering**? Pick the chair deliberately.
+3. Use AI to **widen** options early and **narrow** with human commits late.
+4. Keep a **revision trail** — what changed after user contact, not just what the model suggested.
+
+## Tooling
+
+Cursor, Claude Code, Lovable, v0 — interchangeable for drafts. The mindset does not depend on which one you opened first.
+
+## Common mistakes
+
+- Measuring productivity in lines generated instead of decisions clarified.
+- Hiding behind "the agent chose it" for product calls that are yours.
+- Refusing AI for implementation while also refusing to own product judgment.
+
+## Further reading
+
+- Your mesh / footnotes stack — inquiry loop, folio, shipping discipline (see [angelguirao.com](https://angelguirao.com/)).

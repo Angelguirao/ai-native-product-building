@@ -1,0 +1,65 @@
+---
+title: Principles
+description: Timeless rules for building products when AI changes every step — tools age in months, decisions should last years.
+phase: "00"
+phaseTitle: Foundations
+phaseOrder: 0
+order: 0
+status: shipped
+---
+
+import Figure from "../../components/Figure.astro";
+import Decision from "../../components/Decision.astro";
+
+## Principle
+
+AI-native product building is not "how to use Cursor." It is **how to build any product** when generation is cheap, judgment is scarce, and tools rename themselves every quarter.
+
+The handbook is organized around **decisions**, not tools. Tools live in the last section of every chapter and are allowed to go stale.
+
+## The five rules
+
+1. **Principles before tools** — If a chapter only makes sense with today's model name, it is tooling, not principle.
+2. **Humans own outcomes** — AI proposes; you commit. Especially for architecture, pricing, and what ships.
+3. **Prototype to learn, code to own** — Vibe tools are for learning speed, not for pretending you have a product.
+4. **Artifacts over vibes** — Specs, tests, and trails beat "it felt right in the demo."
+5. **Version in public** — Ship v0.1. Revise when tools change. A living handbook beats a frozen book.
+
+<Figure id="DEC_001" caption="The durable layer sits above the tool churn.">
+  <pre><code>Principles (years)
+    ↓
+Decisions (quarters)
+    ↓
+Workflows (months)
+    ↓
+Tooling (weeks)</code></pre>
+</Figure>
+
+<Decision>
+  **Use AI** for research synthesis, first drafts, boilerplate, and exploration across options you will still choose between.
+
+  **Do not use AI** to skip the decision you are paid to make — what to build, what to cut, what truth the product owes users.
+</Decision>
+
+## Workflow
+
+Each chapter in this handbook follows the same loop:
+
+1. State the **principle** (what should still be true in three years).
+2. Name the **decision** (when X, do Y; when not-X, do Z).
+3. Sketch a **workflow** (replaceable steps).
+4. Link **artifacts** (templates, specs, checklists in `/templates`).
+
+## Tooling
+
+Tooling sections are intentionally small and dated. Replace them as the landscape shifts. The decisions above should not.
+
+## Common mistakes
+
+- Treating the prototype as the product because demos look finished.
+- Letting agents implement architecture you cannot explain in one whiteboard.
+- Optimizing for token speed instead of revision speed — fast generation, slow judgment.
+
+## Artifacts
+
+- [`templates/spec-stub.md`](https://github.com/Angelguirao/ai-native-product-building/tree/main/templates/spec-stub.md) — one-page spec before agentic implementation.

@@ -1,0 +1,20 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Catalog from "../../components/Catalog.astro";
+import { buildCatalogPhases, getHandbookStats } from "../../lib/catalog";
+
+const phases = await buildCatalogPhases();
+const stats = await getHandbookStats();
+---
+
+<BaseLayout
+  title="Catalog"
+  description="Full curriculum — phases, chapters, and ship status."
+  wide={true}
+  current="catalog"
+>
+  <p class="hero-eyebrow">Curriculum</p>
+  <h1 class="hero-title">Catalog</h1>
+  <p class="hero-lede">{stats.shipped} shipped · {stats.total} planned · expand any phase below</p>
+  <Catalog phases={phases} />
+</BaseLayout>
