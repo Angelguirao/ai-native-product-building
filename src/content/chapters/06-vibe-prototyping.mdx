@@ -1,0 +1,77 @@
+---
+title: Vibe prototyping
+description: How to use generation-first tools without fooling yourself — time-boxed learning, falsifiable demos, and artifacts that survive the switch to real code.
+phase: "02"
+phaseTitle: Shape
+phaseOrder: 2
+order: 6
+status: shipped
+---
+
+import Figure from "../../components/Figure.astro";
+import Decision from "../../components/Decision.astro";
+
+## Principle
+
+Vibe prototyping is **deliberate ignorance** in service of speed. You temporarily accept shallow data, fake auth, and happy-path flows so you can learn shape before you pay the tax of ownership.
+
+The skill is not prompting — it is **knowing what you are allowed not to know yet**, and writing that down before the demo seduces you.
+
+## The decision
+
+<Decision>
+  **Vibe prototype** when the open question is *shape*: does this workflow feel worth finishing? Can a stranger grasp the value in ninety seconds?
+
+  **Stop vibing** when the open question is *truth*: billing, permissions, data integrity, performance under load, or "will they come back Tuesday?" — those belong in a codebase or a validation experiment, not a generated UI.
+</Decision>
+
+<Figure id="DEC_005" caption="Each prototype session should end with a written falsifier, not a screenshot folder.">
+  <pre><code>  Hypothesis (1 sentence)
+        │
+        ▼
+  Time-boxed vibe build (hours–days)
+        │
+        ▼
+  Demo to reality ──► falsified? ──yes──► kill or pivot
+        │                    │
+        │                    no
+        │                    ▼
+        └────────────► sharpen hypothesis / next layer</code></pre>
+</Figure>
+
+## Rules of the vibe session
+
+1. **Name the falsifier first** — what observation would change your mind?
+2. **One workflow, not a product** — cut nav, cut settings, cut "admin."
+3. **Fake data on purpose** — label it fake in the UI or README so no one confuses seed rows with truth.
+4. **Record the checklist** — steps a user takes, not a Loom of you clicking fast.
+5. **End with a retro** — what surprised you, what the tool fought, what ticket you'd open in a real repo.
+
+## Workflow
+
+1. Copy [`templates/spec-stub.md`](https://github.com/Angelguirao/ai-native-product-building/tree/main/templates/spec-stub.md) — outcome, non-goals, human-owned decisions.
+2. Build the **smallest** path that tests the falsifier.
+3. Show **one** external person (not your co-founder) — watch where they hesitate.
+4. Log signal: behavior, not praise.
+5. Either iterate in vibe, run a validation test (Chapter 04), or graduate toward ownership (Chapter 07).
+
+## Tooling
+
+Lovable, Bolt, v0, Figma Make — pick by iteration speed for *your* falsifier, not by Twitter hype. Swap tools freely; keep the hypothesis stable.
+
+## Common mistakes
+
+- Polishing UI before the workflow is understood.
+- Treating generated CRUD as a data model — it's a sketch.
+- Adding "just one more screen" instead of running the falsifier.
+- No time box — vibe sessions that last weeks are stealth product denial.
+
+## Artifacts
+
+- Session log: hypothesis · falsifier · time box · signal · next action.
+- [`templates/migration-checklist.md`](https://github.com/Angelguirao/ai-native-product-building/tree/main/templates/migration-checklist.md) — when you approach the leave-prototype gate.
+
+## Further reading
+
+- Chapter 07 — When to leave the prototype
+- Chapter 00 — Principles (prototype to learn, code to own)

@@ -8,7 +8,7 @@ export async function buildCatalogPhases(): Promise<CatalogPhase[]> {
       slug: entry.id,
       title: entry.data.title,
       status: entry.data.status,
-      href: `/chapters/${entry.slug}`,
+      href: `/chapters/${entry.id}`,
       phase: entry.data.phase,
       phaseTitle: entry.data.phaseTitle,
       phaseOrder: entry.data.phaseOrder,

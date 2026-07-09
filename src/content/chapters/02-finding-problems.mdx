@@ -1,0 +1,79 @@
+---
+title: Finding problems worth building
+description: When building is cheap, problem selection is the scarce skill — how to use AI for breadth without skipping the humans who know the pain.
+phase: "01"
+phaseTitle: Discover
+phaseOrder: 1
+order: 2
+status: shipped
+---
+
+import Figure from "../../components/Figure.astro";
+import Decision from "../../components/Decision.astro";
+
+## Principle
+
+AI can generate a hundred product ideas before lunch. That does **not** make ideation free — it makes **choosing** expensive. The failure mode shifts from "we couldn't build it" to "we built the wrong thing beautifully."
+
+Problems worth building share three traits: **recurring pain** (not one-off annoyance), **reachable users** (you can observe behavior, not just opinions), and **honest economics** (someone will pay or repeatedly choose your solution over the default).
+
+## The decision
+
+<Decision>
+  **Use AI** to map problem spaces, summarize interviews, compare existing solutions, and stress-test your one-sentence problem statement.
+
+  **Do not use AI** to replace contact with reality — compliments, synthetic personas, and "market research" that never names a specific human with a specific Tuesday are not discovery.
+</Decision>
+
+<Figure id="DEC_004" caption="Discovery widens with AI; commitment narrows with evidence.">
+  <pre><code>  Curiosity (wide)
+        │
+        ▼
+   AI synthesis ──► hypotheses (written, falsifiable)
+        │
+        ▼
+   Human contact ──► behavior + counts (not vibes)
+        │
+        ▼
+   Problem bet (narrow) ──► build or kill</code></pre>
+</Figure>
+
+## Signals that matter
+
+| Signal | Strong | Weak |
+|--------|--------|------|
+| Pain | "I do this every week and hate step 3" | "That sounds cool" |
+| Workaround | Spreadsheet, hack, paid alternative | Nothing — they don't care |
+| Commitment | Time, money, intro to a colleague | Polite interest |
+| Urgency | Deadline, cost, risk they name | Generic "eventually" |
+
+AI is excellent at turning messy notes into a table like this. You still own the column assignments.
+
+## Workflow
+
+1. **Write the problem before the product** — one sentence: who, when, what breaks. No feature list yet.
+2. **Run an AI pass** on public sources: competitors, forums, job posts, reviews. Output: map of how people already cope.
+3. **Talk to five humans** who match the who — Mom Test rules: past behavior, not future promises.
+4. **Falsify** — what would prove you wrong in two weeks? If you cannot name it, you are still brainstorming.
+5. **Promote or kill** — one problem bet goes to validation (next chapter). The rest go in a graveyard doc with what you learned.
+
+## Tooling
+
+Perplexity, Claude, NotebookLM for synthesis. Calendly and a voice memo for interviews. A spreadsheet beats a Notion board for counts.
+
+## Common mistakes
+
+- Letting the model pick the problem because its pitch was articulate.
+- Confusing TAM slides with evidence — big markets hide weak wedges.
+- Building for "people like me" without checking they share the pain on a schedule.
+- Skipping discovery because vibe tools make building feel like progress.
+
+## Artifacts
+
+- Problem one-pager: who · when · pain · workaround · falsifier · kill criteria.
+- Graveyard list: ideas killed and why — revision fuel, not shame.
+
+## Further reading
+
+- Chapter 01 — Mindset (product vs engineering risk)
+- Chapter 04 — Validation before code (when the bet is ready to test)
