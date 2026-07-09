@@ -1,0 +1,83 @@
+---
+title: UX taste and design judgment
+description: When generation makes screens cheap, curation becomes the product — how to develop taste, reject defaults, and keep humans in the aesthetic loop.
+phase: "02"
+phaseTitle: Shape
+phaseOrder: 2
+order: 5
+status: shipped
+---
+
+import Figure from "../../components/Figure.astro";
+import Decision from "../../components/Decision.astro";
+
+## Principle
+
+AI-generated UI converges on **the median of the training set** — competent, familiar, forgettable. Taste is the ability to notice that convergence and **choose otherwise** when it matters.
+
+Taste is not decoration. It is **prioritization made visible**: what gets emphasis, what gets silence, what feels trustworthy, what signals "this is for you." In an AI-native workflow, taste is a product skill, not a handoff to a separate designer — though specialists still sharpen it.
+
+## The decision
+
+<Decision>
+  **Invest in taste** when the product competes on trust, identity, or delight — fintech, health, creative tools, anything where "generic SaaS" is a liability.
+
+  **Accept good-enough defaults** when the bet is still workflow truth (Chapter 04) or internal tooling — polish later, but never confuse ugly with *unclear*.
+</Decision>
+
+<Figure id="DEC_008" caption="Taste sits between clarity and character — both are human-owned.">
+  <pre><code>  Clarity (can they complete the task?)
+        │
+        ▼
+  Character (does it feel intentional for this audience?)
+        │
+        ▼
+  Craft (typography, motion, density — last 10%)</code></pre>
+</Figure>
+
+## What taste is not
+
+- **Not** picking trendy gradients because Dribbble did.
+- **Not** blocking ship until pixels are perfect.
+- **Not** outsourcing judgment to "make it beautiful" prompts with no reference.
+
+Taste is **consistent choices** aligned with who you serve and what you promise.
+
+## Developing taste with AI in the loop
+
+1. **Collect references** — three products your audience already trusts. Screenshot the flows, not just landing pages.
+2. **Name the axis** — warm vs clinical, dense vs airy, playful vs solemn. One sentence.
+3. **Generate variants** — ask for three directions on the *same* wireframe, not three random pages.
+4. **Compare aloud** — why does A feel cheaper than B? Write it down; that sentence becomes your design brief.
+5. **Lock tokens early** — type scale, spacing, two colors, one accent. AI drifts less when constraints are explicit.
+6. **Test with strangers** — hesitation at a button is taste failure, not preference.
+
+## Workflow
+
+1. **Clarity pass** — can a new user finish the core workflow without help? Fix copy and hierarchy before color.
+2. **Reference pass** — mood board + axis sentence in the repo (`docs/design-intent.md` or README).
+3. **Variant pass** — AI or human produces options; you pick one and kill the rest.
+4. **Constraint pass** — document tokens; reject PRs that invent a third blue.
+5. **Polish pass** — only after validation and vibe exit criteria (Chapters 04, 07).
+
+## Tooling
+
+Figma for reference and hand-tuned screens. v0 / Lovable for variants. Real content — not lorem ipsum — when judging layout. Your own product's words beat placeholder text every time.
+
+## Common mistakes
+
+- Letting every screen look like a different product because each prompt was fresh.
+- Confusing animation with quality — motion without purpose annoys.
+- Copying a reference's palette but not its information hierarchy.
+- Hiring design too late to fix structural confusion.
+
+## Artifacts
+
+- [`templates/ux-review.md`](https://github.com/Angelguirao/ai-native-product-building/tree/main/templates/ux-review.md) — clarity, character, craft checklist before ship.
+- Design intent one-pager: audience · axis · references · tokens · anti-patterns.
+
+## Further reading
+
+- Chapter 04 — Validation before code
+- Chapter 06 — Vibe prototyping
+- Chapter 07 — When to leave the prototype

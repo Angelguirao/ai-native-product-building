@@ -1,0 +1,91 @@
+---
+title: Owning the codebase
+description: The moment you leave vibe tools — repo hygiene, vertical slices, and engineering habits that make AI output maintainable.
+phase: "03"
+phaseTitle: Own
+phaseOrder: 3
+order: 8
+status: shipped
+---
+
+import Figure from "../../components/Figure.astro";
+import Decision from "../../components/Decision.astro";
+
+## Principle
+
+Ownership means **you can change the product on a Tuesday without asking a platform for permission**. The codebase is the institutional memory of decisions — tests, types, and small modules beat a chat log of what the agent did last month.
+
+AI accelerates typing; it does not absolve **structure**. The shift from prototype to owned code is a shift from *demonstration* to *revision under stress*.
+
+## The decision
+
+<Decision>
+  **Own the codebase** when Chapter 07 exit criteria are met — committed users, repeated workflow, hard limits the vibe tool cannot carry.
+
+  **Delay ownership** when you are still falsifying demand or shape. A repo too early is expensive theater; a repo too late is trap in someone else's export format.
+</Decision>
+
+<Figure id="DEC_009" caption="Migrate vertically — each layer proves itself before the next.">
+  <pre><code>  Repo + CI + deploy
+        │
+        ▼
+  Auth + identity
+        │
+        ▼
+  Core data model + migrations
+        │
+        ▼
+  Billing / integrations (if any)
+        │
+        ▼
+  Polish + edge cases</code></pre>
+</Figure>
+
+## What "owned" looks like
+
+| Owned | Not owned |
+|-------|-----------|
+| Git history you control | Export zip from a builder |
+| Reproducible `npm run build` | "Works on my Lovable project" |
+| Env vars documented | Secrets in chat |
+| One command test or smoke | "AI will remember" |
+| You can explain the data model | Tables named `Table_7` |
+
+## Workflow
+
+1. **Run the migration checklist** — [`templates/migration-checklist.md`](https://github.com/Angelguirao/ai-native-product-building/tree/main/templates/migration-checklist.md).
+2. **Scaffold intentionally** — pick stack you can maintain solo or with your team; boring beats clever.
+3. **Port decisions, not pixels** — carry validated workflow and data model; redesign is allowed, amnesia is not.
+4. **Vertical slice first** — one path end-to-end in production before horizontal "platform" work.
+5. **Write the README for future you** — setup, deploy, where AI is allowed to edit.
+6. **Establish gates** — lint, typecheck, or smoke test before merge; agents need guardrails too.
+
+## Working with AI in an owned repo
+
+- **Scope prompts to files and tasks** — "implement ticket #12 in `src/auth/`" beats "improve the app."
+- **Require diffs you can review** — if you cannot summarize the change in one sentence, it is too big.
+- **Keep a `AGENTS.md` or `CONTRIBUTING.md`** — stack, conventions, forbidden zones (billing, migrations).
+- **Never merge what you cannot debug** — especially auth, payments, and data deletion.
+
+## Tooling
+
+Your chosen framework (Next, Astro, Rails, etc.) matters less than: git, CI (GitHub Actions), hosted deploy (Vercel, Fly, Railway), and a migration tool if you have a database.
+
+## Common mistakes
+
+- Big-bang rewrite instead of vertical migration.
+- Letting agents create duplicate abstractions every session.
+- No staging environment — production becomes the test.
+- Skipping delete/export paths until a user asks.
+
+## Artifacts
+
+- Migration checklist (templates/)
+- `AGENTS.md` — boundaries for humans and agents
+- Architecture note — one diagram or bullet list of modules and data flow
+
+## Further reading
+
+- Chapter 07 — When to leave the prototype
+- Chapter 09 — AI pair programming
+- Chapter 12 — Testing and maintainability
