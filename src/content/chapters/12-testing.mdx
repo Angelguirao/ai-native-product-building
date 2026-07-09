@@ -1,0 +1,92 @@
+---
+title: Testing and maintainability
+description: Tests and habits that survive AI-generated code — what to automate, what to spot-check, and how to keep revision cheap.
+phase: "04"
+phaseTitle: Ship
+phaseOrder: 4
+order: 12
+status: shipped
+---
+
+import Figure from "../../components/Figure.astro";
+import Decision from "../../components/Decision.astro";
+
+## Principle
+
+AI increases **throughput** of code; tests and types increase **trust in revision**. Maintainability is the ability to change the product next month without fear — especially when you did not write every line yourself.
+
+The goal is not maximum coverage. The goal is **confidence at the boundaries that hurt users**: money, auth, data loss, and the core workflow you validated in Discover.
+
+## The decision
+
+<Decision>
+  **Automate tests** for business rules, auth paths, payment webhooks, and regressions you have already fixed once.
+
+  **Spot-check manually** for taste, copy, and novel UX — but do not use manual QA as a substitute for tests on logic that will break silently.
+</Decision>
+
+<Figure id="DEC_013" caption="Test pyramid for small teams — wide base of fast tests, few slow paths.">
+  <pre><code>        ┌─────────────┐
+        │  E2E (few)  │  critical user paths
+        ├─────────────┤
+        │ Integration │  API + DB, webhooks
+        ├─────────────┤
+        │  Unit (many)│  pure logic, parsers
+        └─────────────┘</code></pre>
+</Figure>
+
+## What to test first
+
+| Priority | Examples | Why |
+|----------|----------|-----|
+| P0 | Sign up, pay, delete account, core workflow | User trust |
+| P1 | Permissions, idempotency on webhooks | Security + money |
+| P2 | Edge cases from support tickets | Regression fuel |
+| P3 | Snapshot everything | False confidence |
+
+Ask agents to **write tests with the feature**, not in a later "test sprint" that never ships.
+
+## Maintainability habits
+
+1. **CI on every PR** — build + lint + test; agents do not merge around it.
+2. **Types or schemas** — inputs validated at boundaries; models hallucinate shapes.
+3. **Small modules** — files you can delete without archaeology.
+4. **Fix flukes immediately** — flaky tests train you to ignore red.
+5. **Delete dead code** — agents add; humans prune.
+
+## Working with AI on tests
+
+- Prompt: *"Implement X and add tests for acceptance criteria A, B, C."*
+- Reject tests that only assert mocks or mirror implementation line-for-line.
+- Require one **failure test** — prove the test can catch a break.
+- For UI: prefer few Playwright paths over hundred component snapshots.
+
+## Workflow
+
+1. Acceptance criteria in ticket → map 1:1 to test descriptions.
+2. Implement feature + tests in same PR.
+3. CI green before review; human reads test names for intent.
+4. On bug: regression test first, then fix.
+5. Quarterly: delete tests that no longer encode a decision.
+
+## Tooling
+
+Vitest, Jest, pytest — pick what your stack uses. Playwright or Cypress for thin E2E. TypeScript, Zod, or DB constraints for shape. GitHub Actions or similar for CI.
+
+## Common mistakes
+
+- 100% coverage vanity while P0 paths untested.
+- Letting agents disable CI "temporarily."
+- No test for webhooks — production surprises at 2am.
+- Testing implementation details — refactors become impossible.
+
+## Artifacts
+
+- [`templates/test-plan.md`](https://github.com/Angelguirao/ai-native-product-building/tree/main/templates/test-plan.md) — P0/P1 map per feature.
+- Regression rule: no bug fix without a test unless explicitly documented why.
+
+## Further reading
+
+- Chapter 09 — AI pair programming
+- Chapter 11 — Architecture decisions
+- Chapter 13 — Deployment

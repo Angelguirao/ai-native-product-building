@@ -1,0 +1,103 @@
+---
+title: Architecture decisions
+description: Boring beats clever — how to choose stacks, boundaries, and trade-offs you can explain when AI fills in the middle.
+phase: "04"
+phaseTitle: Ship
+phaseOrder: 4
+order: 11
+status: shipped
+---
+
+import Figure from "../../components/Figure.astro";
+import Decision from "../../components/Decision.astro";
+
+## Principle
+
+Architecture is the set of **bets that are expensive to reverse** — data model, auth model, deployment shape, integration boundaries. AI makes implementing any of these fast; it does not make choosing wisely automatic.
+
+Good architecture for AI-native teams is **legible**: you can draw it on a whiteboard, name the modules, and say what is forbidden to import across boundaries. If only the model understands the structure, you do not have architecture — you have luck.
+
+## The decision
+
+<Decision>
+  **Invest in explicit architecture** when the product has multiple contributors, paying users, regulated data, or expected life beyond six months.
+
+  **Stay deliberately simple** (monolith, one database, one deploy) when you are still falsifying scope — but write the simplification down as a *decision*, not an accident.
+</Decision>
+
+<Figure id="DEC_012" caption="Decisions are human-owned; implementation is shared with AI.">
+  <pre><code>  Constraints (users, compliance, team)
+        │
+        ▼
+  ADR: choice + rejected options + why
+        │
+        ▼
+  AI implements within boundaries
+        │
+        ▼
+  Review: imports, data flow, failure modes</code></pre>
+</Figure>
+
+## What to decide early
+
+| Decision | Reversibility | Human owns |
+|----------|---------------|------------|
+| Monolith vs services | Low later | Yes |
+| Database + auth provider | Low | Yes |
+| Multi-tenant model | Very low | Yes |
+| Event vs request-driven | Medium | Yes |
+| Caching strategy | Medium | Yes |
+| Folder layout | High | You + team convention |
+
+Defer microservices until **pain is measured**, not imagined.
+
+## ADR habit (Architecture Decision Record)
+
+One page per bet:
+
+1. **Context** — what forces the choice?
+2. **Decision** — what we will do.
+3. **Rejected options** — what we will not do and why.
+4. **Consequences** — what gets easier/harder.
+
+Store in `docs/adr/` or `architecture/`. Link from PRs that implement the decision. Agents read ADRs before proposing structural changes.
+
+## Workflow
+
+1. **Sketch the system** — boxes: client, API, data, jobs, third parties. Arrows labeled with data types.
+2. **Name boundaries** — what may not call what directly.
+3. **Write ADR** before the agent scaffolds five patterns you did not want.
+4. **Implement vertical slice** — one path through the architecture in production.
+5. **Stress one failure** — what happens when DB, email, or payment provider is down?
+6. **Revise ADR** when reality disagrees — version in git, do not silent-drift.
+
+## AI-specific risks
+
+- **Accidental microservices** — new folders that become distributed mud.
+- **Duplicate sources of truth** — cache + DB + local state with no story.
+- **Auth sprinkled** — checks in random components instead of one layer.
+- **Over-abstraction** — interfaces for one implementation.
+
+Review imports and data flow in every structural PR.
+
+## Tooling
+
+Mermaid or Excalidraw for diagrams. ADR templates in repo. Linters for module boundaries if you outgrow discipline.
+
+## Common mistakes
+
+- Choosing stack because the model suggested it yesterday.
+- No written rejection — team re-litigates the same debate monthly.
+- Architecture for scale you do not have — operability debt on day one.
+- Letting agents add databases without migration story.
+
+## Artifacts
+
+- [`templates/adr.md`](https://github.com/Angelguirao/ai-native-product-building/tree/main/templates/adr.md) — one decision per file.
+- System sketch — one diagram linked from README or `docs/architecture.md`.
+
+## Further reading
+
+- Chapter 08 — Owning the codebase
+- Chapter 10 — Agentic development
+- Chapter 12 — Testing and maintainability
