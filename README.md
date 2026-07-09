@@ -2,7 +2,7 @@
 
 A **living handbook** for building products when AI changes every step — principles and decision frameworks that outlive the tools.
 
-**v1.0** · full catalog shipped · [live site](https://ai-native-product-building.vercel.app) · [catalog](/catalog) · [glossary](/glossary)
+**v1.1** · full catalog + resource loop · [live site](https://ai-native-product-building.vercel.app) · [catalog](/catalog) · [resource loop](docs/RESOURCE-LOOP.md)
 
 ## What this is
 

@@ -403,6 +403,69 @@ a {
   color: var(--muted);
 }
 
+.chapter-resources {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+}
+
+.resource-block {
+  margin-bottom: 2rem;
+}
+
+.resource-block h2 {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--muted);
+  margin: 0 0 0.5rem;
+}
+
+.resource-intro {
+  font-size: 0.92rem;
+  color: var(--muted);
+  margin: 0 0 1rem;
+}
+
+.resource-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.resource-list > li {
+  padding: 1rem 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--border) 70%, transparent);
+}
+
+.resource-list > li:last-child {
+  border-bottom: none;
+}
+
+.resource-meta {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--muted);
+}
+
+.resource-note {
+  margin: 0.35rem 0 0;
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+.resource-brain {
+  margin: 0.35rem 0 0;
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  color: var(--muted);
+}
+
+.resource-brain code {
+  font-size: 0.68rem;
+}
+
 @media (max-width: 640px) {
   .site-main {
     padding: 1.75rem 1rem 4rem;

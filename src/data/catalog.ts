@@ -146,4 +146,4 @@ export const plannedLessons: PlannedLesson[] = [
   },
 ];
 
-export const handbookVersion = "1.0.0";
+export const handbookVersion = "1.1.0";
