@@ -1,0 +1,80 @@
+---
+title: Scaling
+description: When growth stops being a feature request — performance, reliability, team shape, and what not to automate yet.
+phase: "05"
+phaseTitle: Grow
+phaseOrder: 5
+order: 16
+status: shipped
+---
+
+import Figure from "../../components/Figure.astro";
+import Decision from "../../components/Decision.astro";
+
+## Principle
+
+**Scaling** is what happens when success stresses the system you built for learning — traffic, data, support load, team size, compliance questions. AI lets you patch faster; it does not remove the need to **measure pain** before splitting services or hiring.
+
+Scale problems are real when they are **measured**: p95 latency, queue depth, on-call pages, cost per user, support tickets per release. Until then, premature scale is vanity architecture.
+
+## The decision
+
+<Decision>
+  **Scale infrastructure or team** when a measured bottleneck blocks the north star — users cannot complete the workflow, you are losing money per user, or you cannot ship safely.
+
+  **Do not scale** to impress investors or because the model suggested Kubernetes — stay boring until the graph bends wrong.
+</Decision>
+
+<Figure id="DEC_017" caption="Scale in layers — each layer justified by a number.">
+  <pre><code>  Vertical scale (bigger box, index, cache)
+        │
+        ▼ still hurting?
+  Horizontal scale (workers, read replicas)
+        │
+        ▼ still hurting?
+  Split boundaries (services, queues) — with ADR
+        │
+        ▼
+  Team + process (on-call, SLOs)</code></pre>
+</Figure>
+
+## What scales first (usually)
+
+1. **Database** — indexes, query shape, connection pooling.
+2. **Caching** — read-heavy paths; invalidate with a story.
+3. **Background jobs** — email, webhooks, heavy work off request path.
+4. **CDN / edge** — static assets, edge functions for latency.
+5. **People** — support, then engineering — when signal says you cannot automate the pain away.
+
+## AI at scale
+
+- Agents for **internal** ops — runbooks, log triage, draft postmortems — not unsupervised customer-facing automation at volume.
+- **Rate limits and cost caps** on model calls — growth meets token bills fast.
+- **Evals** if AI is in the product path — quality drifts under load.
+
+## Workflow
+
+1. Identify bottleneck with data — not gut.
+2. Write ADR if the fix changes architecture (Chapter 11).
+3. Implement smallest relief — often not microservices.
+4. Load test or replay production traffic sample.
+5. Set SLO — one availability or latency target users feel.
+6. Revisit monthly — remove scale complexity that no longer pays rent.
+
+## Common mistakes
+
+- Microservices before monolith catches fire.
+- Scaling headcount before workflow is repeatable.
+- Ignoring support as scaling signal — humans are the queue.
+- AI features without cost model at 10× traffic.
+
+## Artifacts
+
+- Capacity note — current limits, next threshold, owner.
+- Incident/postmortem template when scale bites — blameless, action items.
+
+## Further reading
+
+- Chapter 11 — Architecture decisions
+- Chapter 13 — Deployment
+- Chapter 17 — Teams and governance

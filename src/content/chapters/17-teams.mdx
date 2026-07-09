@@ -1,0 +1,86 @@
+---
+title: Teams and governance
+description: When more than one human and many agents touch the product — ownership, review norms, and keeping judgment distributed.
+phase: "05"
+phaseTitle: Grow
+phaseOrder: 5
+order: 17
+status: shipped
+---
+
+import Figure from "../../components/Figure.astro";
+import Decision from "../../components/Decision.astro";
+
+## Principle
+
+A team is not "more people typing." It is **a system for making decisions when you are not in the room** — including decisions made by agents on your behalf.
+
+Governance is the minimum process that keeps **trust** with users and **sanity** with builders: who owns what, what must be reviewed, how incidents are handled, and how AI use is disclosed and bounded.
+
+## The decision
+
+<Decision>
+  **Add governance** when multiple people merge to production, customers depend on uptime, or agents run with repo access — light docs beat heavy bureaucracy.
+
+  **Stay informal** only while one human owns all gates and users are few — but write `AGENTS.md` and deploy rules anyway so future you is not guessing.
+</Decision>
+
+<Figure id="DEC_018" caption="Ownership + gates scale judgment without centralizing every line of code.">
+  <pre><code>  Areas (product, eng, ops) ──► owners
+        │
+        ▼
+  Shared gates (auth, pay, deploy, schema)
+        │
+        ▼
+  Agents inherit boundaries from docs + CI
+        │
+        ▼
+  Incidents → postmortem → update boundaries</code></pre>
+</Figure>
+
+## Lightweight team primitives
+
+| Primitive | Purpose |
+|-----------|---------|
+| **Owner per area** | One name for product, backend, infra, support |
+| **CODEOWNERS** | Required review on sensitive paths |
+| **AGENTS.md** | Conventions for humans and AI |
+| **Deploy policy** | Who promotes prod; agents never alone |
+| **Incident channel** | Where outages live; postmortem in 48h |
+
+## AI governance specifics
+
+- **Disclose** when AI assists customer-facing output if your users care (health, legal, money).
+- **No customer PII** in public model prompts without policy.
+- **Audit** agent actions on production systems — logs, PRs, not chat.
+- **Train the team** on pair and agentic chapters — shared vocabulary reduces fear and misuse.
+
+## Workflow
+
+1. Map modules to owners — even if two people wear all hats today.
+2. Add CODEOWNERS for `migrations/`, `auth/`, `billing/`, `.github/`.
+3. Align on weekly iteration bet (Chapter 15) — one priority, visible.
+4. Run blameless postmortem after incidents — update agent boundaries.
+5. Quarterly: prune process nobody uses.
+
+## Common mistakes
+
+- Everyone can merge everything until something breaks badly.
+- Agents with prod secrets because it was faster once.
+- Process theater — meetings without decisions logged.
+- Hiring before workflow is documented — chaos at scale.
+
+## Artifacts
+
+- [`templates/team-charter.md`](https://github.com/Angelguirao/ai-native-product-building/tree/main/templates/team-charter.md) — owners, gates, rhythms.
+- On-call or escalation doc — even if on-call is you for now.
+
+## Further reading
+
+- Chapter 10 — Agentic development
+- Chapter 15 — Iteration
+- Chapter 00 — Principles (humans own outcomes)
+
+## v1.0
+
+This chapter closes the first full pass of the handbook. Tools will change; **decisions, artifacts, and revision in public** should not. Bump `handbookVersion` when you add chapters; spin sharp principles to footnotes when they stand alone.

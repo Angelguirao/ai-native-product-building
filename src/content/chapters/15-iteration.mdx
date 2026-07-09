@@ -1,0 +1,85 @@
+---
+title: Iteration
+description: Revision as the product — how to turn signals into bets, ship small, and keep the handbook loop alive in your own product.
+phase: "05"
+phaseTitle: Grow
+phaseOrder: 5
+order: 15
+status: shipped
+---
+
+import Figure from "../../components/Figure.astro";
+import Decision from "../../components/Decision.astro";
+
+## Principle
+
+Shipping is not the finish line — it is **the start of observation at scale**. Iteration is the discipline of changing the product when evidence says so, and **not** changing it when the loudest voice in the room is anxiety or a model's suggestion.
+
+AI-native teams iterate faster by default. The failure mode is **thrash**: endless tweaks without a bet, or rebuilding because generation is cheap. Good iteration is **versioned learning** — each release tied to a falsifier and a signal log.
+
+## The decision
+
+<Decision>
+  **Iterate** when metrics, support, or repeated user behavior disconfirm your current hypothesis — and you can name the smallest change that tests the revision.
+
+  **Hold** when signal is thin — one angry email, one competitor launch, one model saying "add AI chat" — unless it maps to your north star.
+</Decision>
+
+<Figure id="DEC_016" caption="The revision loop — same as discovery, but with real users in production.">
+  <pre><code>  Signal (metrics, support, interviews)
+        │
+        ▼
+  Revise bet (written)
+        │
+        ▼
+  Smallest shippable test
+        │
+        ▼
+  Deploy → observe → log signal</code></pre>
+</Figure>
+
+## Iteration unit
+
+One iteration should fit this sentence:
+
+> "We believe **X** is why **metric** is stuck; we will ship **Y** by **date**; if **Z** does not happen, we revert or rethink."
+
+If you cannot fill X, Y, Z — you are exploring, not iterating. Exploration is fine; time-box it.
+
+## Cadence
+
+| Rhythm | What happens |
+|--------|----------------|
+| Daily | Triage support, errors — fix P0 only |
+| Weekly | Metrics review (Chapter 14) → one decision |
+| Monthly | Problem bet still true? Scope creep audit |
+| Quarterly | Kill features with no signal |
+
+AI summarizes logs and tickets; **you** pick the one bet for the week.
+
+## Workflow
+
+1. Pull signal from analytics, support, and at least one human conversation.
+2. Write revised hypothesis — what changed in your belief.
+3. Spec smallest change — spec stub + test plan.
+4. Ship via deploy discipline (Chapter 13).
+5. Log outcome in metrics review — strengthen, weaken, or kill.
+6. Update ADR if architecture assumption broke.
+
+## Common mistakes
+
+- Feature factory without north star movement.
+- Rewriting instead of deleting.
+- Letting agents "improve UX" without a metric or falsifier.
+- No graveyard — old bets haunt the roadmap forever.
+
+## Artifacts
+
+- [`templates/iteration-bet.md`](https://github.com/Angelguirao/ai-native-product-building/tree/main/templates/iteration-bet.md) — X, Y, Z per release.
+- Changelog users can read — not only git log.
+
+## Further reading
+
+- Chapter 04 — Validation before code
+- Chapter 14 — Analytics and feedback loops
+- Chapter 16 — Scaling
