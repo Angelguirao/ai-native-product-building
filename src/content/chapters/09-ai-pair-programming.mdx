@@ -1,0 +1,94 @@
+---
+title: AI pair programming
+description: You drive, the model accelerates — scoped sessions, review discipline, and when to type yourself.
+phase: "03"
+phaseTitle: Own
+phaseOrder: 3
+order: 9
+status: shipped
+---
+
+import Figure from "../../components/Figure.astro";
+import Decision from "../../components/Decision.astro";
+
+## Principle
+
+Pair programming with AI is **synchronous collaboration**: you hold context, intent, and accountability; the model holds stamina for boilerplate, search, and first drafts. It is not autopilot. The quality ceiling is still your judgment; the floor rises when you run tight loops.
+
+The habit that separates productive pairs from messy repos: **small diffs, explicit intent, immediate verification**.
+
+## The decision
+
+<Decision>
+  **Pair with AI** for bounded tasks — a ticket, a function, a test file, a refactor with clear before/after. You can state done criteria in one sentence.
+
+  **Type it yourself** (or pair human-to-human) when the change touches core architecture, security boundaries, or product calls you cannot yet explain — or when you are learning a new stack and need the muscle memory.
+</Decision>
+
+<Figure id="DEC_010" caption="The pair loop — intent, diff, verify, commit. Skip a step and debt compounds.">
+  <pre><code>  Intent (ticket + constraints)
+        │
+        ▼
+  Model proposes diff
+        │
+        ▼
+  You review ──► reject / edit / accept
+        │
+        ▼
+  Verify (run, test, read)
+        │
+        ▼
+  Commit with message that states why</code></pre>
+</Figure>
+
+## Session hygiene
+
+1. **Start from a clean tree** — know what is already dirty; stash unrelated work.
+2. **Point at files** — `@path`, selections, or "only edit `src/auth/`."
+3. **State non-goals** — "do not add dependencies," "no schema changes."
+4. **One concern per session** — auth fix ≠ sidebar redesign.
+5. **Run the verifier** — build, test, or manual repro before you move on.
+6. **Commit** — chat history is not version control.
+
+## Review what the model writes
+
+| Check | Why |
+|-------|-----|
+| Does it match the ticket? | Scope creep is the default |
+| New dependencies? | Each one is a maintenance bet |
+| Error handling | Models love happy paths |
+| Names and types | Garbage names hide wrong logic |
+| Secrets | Never accept pasted keys |
+| Tests | Did it assert behavior or itself? |
+
+If you cannot summarize the diff aloud in thirty seconds, split the task.
+
+## Workflow
+
+1. Write or paste the **spec stub** — outcome, non-goals, acceptance checks.
+2. Open pair session with **repo context** (rules file, relevant files).
+3. Implement → review → verify loop until acceptance passes.
+4. **You** commit; message references the decision, not the model brand.
+5. Note surprises in the ticket — fodder for `AGENTS.md` updates.
+
+## Tooling
+
+Cursor, Claude Code, Copilot, Cody — interchangeable if the loop is disciplined. Terminal access helps; blind acceptance does not.
+
+## Common mistakes
+
+- "Fix everything" prompts that touch twenty files.
+- Merging without running anything because it "looked right."
+- Letting the model rewrite working code for style mid-feature.
+- No `AGENTS.md` — every session reinvents conventions.
+
+## Artifacts
+
+- [`templates/spec-stub.md`](https://github.com/Angelguirao/ai-native-product-building/tree/main/templates/spec-stub.md) — before implementation.
+- [`templates/pair-session.md`](https://github.com/Angelguirao/ai-native-product-building/tree/main/templates/pair-session.md) — intent, verify, outcome log.
+
+## Further reading
+
+- Chapter 08 — Owning the codebase
+- Chapter 10 — Agentic development
+- Chapter 12 — Testing and maintainability

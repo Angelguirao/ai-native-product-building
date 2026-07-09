@@ -1,0 +1,101 @@
+---
+title: Agentic development
+description: When agents run longer loops — human gates, forbidden zones, and workflows that stay inspectable.
+phase: "03"
+phaseTitle: Own
+phaseOrder: 3
+order: 10
+status: shipped
+---
+
+import Figure from "../../components/Figure.astro";
+import Decision from "../../components/Decision.astro";
+
+## Principle
+
+**Agentic** means the system can plan, use tools, and iterate across multiple steps — not just complete the next line. The product risk is not that agents fail; it is that they **succeed at the wrong thing** while you were not looking.
+
+Agentic development keeps humans at **decision gates**: architecture, data deletion, payments, external side effects, and merge to production. Everything else is negotiable automation.
+
+## The decision
+
+<Decision>
+  **Use agentic workflows** for repeatable multi-step work with clear verification — migrations across files, test-driven fixes, docs sync, scripted refactors with CI.
+
+  **Do not delegate** product scope, security policy, production deploy approval, or customer-facing copy without review — even if the agent "finished."
+</Decision>
+
+<Figure id="DEC_011" caption="Agents operate in a fenced yard; humans own the gates.">
+  <pre><code>  ┌─────────────────────────────────────┐
+  │  Agent loop (plan → act → observe)  │
+  │  allowed: src/, tests/, docs/       │
+  └──────────────┬──────────────────────┘
+                 │ proposes
+                 ▼
+  Human gates: schema · billing · deploy · secrets
+                 │
+                 ▼
+           merge / ship</code></pre>
+</Figure>
+
+## Gates worth enforcing
+
+| Gate | Why human |
+|------|-----------|
+| Database migrations | Data loss is irreversible |
+| Auth / permissions | Security is not probabilistic |
+| Payments & webhooks | Money moves for real |
+| External API sends | Email, SMS, charges — side effects |
+| Dependency major bumps | Supply chain and breakage |
+| Production deploy | Users meet your mistakes |
+
+Encode forbidden paths in `AGENTS.md` and CI — not just chat reminders.
+
+## A minimal agentic workflow
+
+1. **Ticket** with acceptance criteria and file scope.
+2. **Agent plan** — you approve or edit before code runs.
+3. **Implementation** in allowed directories.
+4. **Automated verify** — lint, test, build (agent runs; you trust but spot-check).
+5. **Human review** on diff size and gate files.
+6. **Merge** — you or CI; agent does not push to prod alone.
+
+## Inspectability
+
+- **Logs** — what tools ran, in what order.
+- **Small PRs** — one ticket per branch when possible.
+- **Repro commands** — `npm test`, `npm run build` in the ticket.
+- **Rollback** — feature flags or revert plan for agent-shipped work.
+
+If you cannot reconstruct what happened from git + CI, the agent had too much rope.
+
+## Workflow
+
+1. Maintain [`templates/agent-boundary.md`](https://github.com/Angelguirao/ai-native-product-building/tree/main/templates/agent-boundary.md) per repo — allowed, forbidden, verify commands.
+2. Start agent on **plan-only** for unfamiliar tasks; approve plan.
+3. Cap diff size — stop and split if >400 lines unless migration.
+4. Run gates manually for forbidden zones even if "already done."
+5. After merge, update boundaries when the agent surprised you.
+
+## Tooling
+
+Claude Code, Cursor agent mode, Devin-class runners, custom scripts with MCP — same rules. Longer autonomy demands **narrower** scope and **stricter** verify.
+
+## Common mistakes
+
+- Unattended overnight runs on main.
+- Agents editing lockfiles and CI config casually.
+- No plan approval — debugging hallucinated architecture later.
+- Treating green tests as proof of correct product behavior.
+
+## Artifacts
+
+- `AGENTS.md` — repo conventions + pointer to boundary template.
+- CI required checks — build, lint, test on every agent PR.
+- Incident note when an agent breaks prod — update forbidden list.
+
+## Further reading
+
+- Chapter 09 — AI pair programming
+- Chapter 11 — Architecture decisions
+- Chapter 13 — Deployment
