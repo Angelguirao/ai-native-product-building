@@ -28,8 +28,8 @@ Conventions for AI-assisted work on this site.
 npm run build
 ```
 
-## Chapter shape
+## Resource loop
 
-Each chapter: frontmatter with `status: shipped`, imports for `Figure` and `Decision`, sections Principle → decision → workflow → tooling → mistakes → artifacts.
+Chapters link to raw captures in `brain/raw/` and footnotes spin-outs. See [`docs/RESOURCE-LOOP.md`](docs/RESOURCE-LOOP.md).
 
-See [`templates/agent-boundary.md`](templates/agent-boundary.md) for the full boundary template.
+When adding resources: update `src/data/resources.ts` + brain raw capture — not orphan URLs in MDX alone.

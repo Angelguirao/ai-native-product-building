@@ -33,17 +33,20 @@ const stats = await getHandbookStats();
 
   <section class="progress-block">
     <div class="progress-meta">
-      <span>{stats.shipped} / {stats.total} chapters shipped</span>
+      <span>{stats.refined} refined · {stats.shipped} shipped · {stats.total} chapters</span>
       <span>v{handbookVersion}</span>
       <span>updated {new Date().toISOString().slice(0, 10)}</span>
     </div>
-    <div class="progress-bar" role="progressbar" aria-valuenow={stats.progress} aria-valuemin="0" aria-valuemax="100">
+    <div class="progress-bar" role="progressbar" aria-valuenow={stats.progress} aria-valuemin="0" aria-valuemax="100" aria-label="Chapters refined or battle-tested">
       <span style={`width: ${stats.progress}%`}></span>
     </div>
+    <p class="progress-hint">
+      <a href="/trails">Pick a reading trail</a> · <a href="/decisions">Decision registry</a> · <a href="/changelog">Changelog</a>
+    </p>
   </section>
 
   <h2 class="hero-eyebrow" style="margin-top: 2.5rem">Catalog</h2>
-  <p style="color: var(--muted); margin-top: -0.5rem">Tap a phase to expand. Shipped chapters are readable now.</p>
+  <p style="color: var(--muted); margin-top: -0.5rem">Tap a phase to expand. Maturity badges show depth — not just ship status.</p>
   <Catalog phases={phases} />
 
   <p style="margin-top: 2rem; font-size: 0.95rem; color: var(--muted)">

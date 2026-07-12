@@ -2,6 +2,7 @@
 import { getCollection, render } from "astro:content";
 import ChapterLayout from "../../layouts/ChapterLayout.astro";
 import ChapterResources from "../../components/ChapterResources.astro";
+import { getChapterNav } from "../../lib/catalog";
 
 export async function getStaticPaths() {
   const chapters = await getCollection("chapters");
@@ -13,6 +14,7 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content } = await render(entry);
+const nav = await getChapterNav(entry.id);
 ---
 
 <ChapterLayout
@@ -21,6 +23,8 @@ const { Content } = await render(entry);
   phase={entry.data.phase}
   phaseTitle={entry.data.phaseTitle}
   status={entry.data.status}
+  maturity={entry.data.maturity}
+  nav={nav}
 >
   <Content />
   <ChapterResources chapterId={entry.id} />

@@ -1,0 +1,60 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getTrail, handbookTrails } from "../../data/trails";
+import { getOrderedChapters } from "../../lib/catalog";
+
+export function getStaticPaths() {
+  return handbookTrails.map((trail) => ({
+    params: { id: trail.id },
+  }));
+}
+
+const { id } = Astro.params;
+const trail = getTrail(id!);
+if (!trail) {
+  return Astro.redirect("/trails");
+}
+
+const allChapters = await getOrderedChapters();
+const bySlug = new Map(allChapters.map((c) => [c.slug, c]));
+const steps = trail.chapterIds
+  .map((slug, index) => {
+    const chapter = bySlug.get(slug);
+    if (!chapter) return null;
+    return { index: index + 1, ...chapter };
+  })
+  .filter(Boolean);
+---
+
+<BaseLayout
+  title={trail.title}
+  description={trail.description}
+  wide={true}
+  current="trails"
+>
+  <p class="hero-eyebrow">
+    <a href="/trails">Trails</a> · {trail.audience}
+  </p>
+  <h1 class="hero-title" style="font-size: clamp(1.75rem, 4vw, 2.25rem)">{trail.title}</h1>
+  <p class="hero-lede">{trail.description}</p>
+
+  <ol class="trail-steps">
+    {steps.map((step) => (
+      <li>
+        <a class="trail-step" href={step!.href}>
+          <span class="trail-step-num">{step!.index}</span>
+          <span class="trail-step-body">
+            <span class="trail-step-title">{step!.title}</span>
+            <span class={`status status-maturity status-maturity-${step!.maturity}`}>
+              {step!.maturity}
+            </span>
+          </span>
+        </a>
+      </li>
+    ))}
+  </ol>
+
+  <p style="margin-top: 2rem">
+    <a href="/decisions">View all decisions →</a>
+  </p>
+</BaseLayout>

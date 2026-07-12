@@ -1,0 +1,54 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { handbookVersion } from "../data/catalog";
+
+const changelog = [
+  {
+    version: "1.2.0",
+    date: "2026-07-12",
+    items: [
+      "Maturity labels (shipped / refined) and honest homepage progress",
+      "Decision registry at /decisions",
+      "Reading trails by role at /trails",
+      "Chapter prev/next navigation",
+      "Public-only resource blocks — pattern cards, no private repo paths",
+      "Refined chapters: validation, leave the prototype, agentic development",
+    ],
+  },
+  {
+    version: "1.1.0",
+    date: "2026-07-09",
+    items: [
+      "Resource loop — chapter resources, footnotes spin-outs, case study scaffolding",
+      "All 18 chapters shipped (v1 essays)",
+    ],
+  },
+  {
+    version: "1.0.0",
+    date: "2026-07-08",
+    items: ["Initial handbook catalog and chapter scaffold"],
+  },
+];
+---
+
+<BaseLayout title="Changelog" description="Handbook version history." current="changelog">
+  <p class="hero-eyebrow">v{handbookVersion}</p>
+  <h1 class="hero-title" style="font-size: clamp(1.75rem, 4vw, 2.25rem)">Changelog</h1>
+  <p class="hero-lede">Versioned in public like software — structure and content bumps tracked here.</p>
+
+  <div class="changelog">
+    {changelog.map((entry) => (
+      <section class="changelog-entry">
+        <h2>
+          v{entry.version}
+          <span class="changelog-date">{entry.date}</span>
+        </h2>
+        <ul>
+          {entry.items.map((item) => (
+            <li>{item}</li>
+          ))}
+        </ul>
+      </section>
+    ))}
+  </div>
+</BaseLayout>

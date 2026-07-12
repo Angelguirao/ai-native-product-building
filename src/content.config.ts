@@ -12,6 +12,9 @@ const chapters = defineCollection({
     phaseOrder: z.number(),
     order: z.number(),
     status: z.enum(["shipped", "draft", "planned"]),
+    maturity: z
+      .enum(["draft", "shipped", "refined", "battle-tested"])
+      .default("shipped"),
   }),
 });
 

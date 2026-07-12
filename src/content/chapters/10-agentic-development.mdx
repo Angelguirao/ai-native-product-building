@@ -6,6 +6,7 @@ phaseTitle: Own
 phaseOrder: 3
 order: 10
 status: shipped
+maturity: refined
 ---
 
 import Figure from "../../components/Figure.astro";
@@ -88,11 +89,25 @@ Claude Code, Cursor agent mode, Devin-class runners, custom scripts with MCP —
 - No plan approval — debugging hallucinated architecture later.
 - Treating green tests as proof of correct product behavior.
 
+## Scenario (composite)
+
+A small product team used an agent to refactor twelve API handlers into a shared middleware pattern. The agent proposed deleting a deprecated table column in the same PR — caught at human gate because migrations were forbidden without review. Plan-only mode saved two hours of rollback.
+
+They merged in three PRs: middleware extraction, test updates, docs. CI required build and integration tests. A follow-up overnight run on main without gates shipped a lockfile bump that broke deploy — added to the forbidden list and `AGENTS.md`.
+
 ## Artifacts
 
 - `AGENTS.md` — repo conventions + pointer to boundary template.
 - CI required checks — build, lint, test on every agent PR.
 - Incident note when an agent breaks prod — update forbidden list.
+
+## Falsify this
+
+- Agent ran on main overnight with no plan approval — inspectability is already gone.
+- Green CI but no human read the diff in forbidden zones (package.json, workflows, env).
+- One 2,000-line PR "because the agent finished" — cannot review, cannot revert cleanly.
+- You delegated customer-facing release notes to the agent without edit.
+- You cannot answer "what tools did it run?" from git and CI logs alone.
 
 ## Further reading
 

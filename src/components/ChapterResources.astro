@@ -21,13 +21,13 @@ const hasContent = resources.length > 0 || spinOut || cases.length > 0;
   <section class="chapter-resources">
     {spinOut && (
       <div class="resource-block">
-        <h2>Footnotes spin-out</h2>
+        <h2>Related principle</h2>
         <p class="resource-intro">
-          Sharp principle distilled for the wiki — improves as folio synthesis grows.
+          Distilled essay on the public wiki — same idea in tighter form.
         </p>
         <ul class="resource-list">
           <li>
-            <a href={spinOut.url}>{spinOut.title}</a>
+            <a href={spinOut.url} rel="noopener noreferrer">{spinOut.title}</a>
             <span class="resource-meta"> · footnotes</span>
           </li>
         </ul>
@@ -38,7 +38,7 @@ const hasContent = resources.length > 0 || spinOut || cases.length > 0;
       <div class="resource-block">
         <h2>Recommended resources</h2>
         <p class="resource-intro">
-          Captured raw in <code>brain/raw/</code> — run compile, synthesize, then revise this chapter.
+          External books, courses, and essays that informed this chapter.
         </p>
         <ul class="resource-list">
           {resources.map((r) => (
@@ -46,11 +46,6 @@ const hasContent = resources.length > 0 || spinOut || cases.length > 0;
               <a href={r.url} rel="noopener noreferrer">{r.title}</a>
               <span class="resource-meta"> · {r.kind}</span>
               {r.note && <p class="resource-note">{r.note}</p>}
-              {r.brainRaw && (
-                <p class="resource-brain">
-                  <span>brain:</span> <code>raw/{r.brainRaw}.md</code>
-                </p>
-              )}
             </li>
           ))}
         </ul>
@@ -59,19 +54,15 @@ const hasContent = resources.length > 0 || spinOut || cases.length > 0;
 
     {cases.length > 0 && (
       <div class="resource-block">
-        <h2>Case studies</h2>
+        <h2>Pattern cards</h2>
+        <p class="resource-intro">
+          Anonymous composite scenarios — useful shapes, not specific companies.
+        </p>
         <ul class="resource-list">
           {cases.map((c) => (
             <li>
-              {c.url ? (
-                <a href={c.url} rel="noopener noreferrer">{c.title}</a>
-              ) : (
-                <strong>{c.title}</strong>
-              )}
+              <strong>{c.title}</strong>
               <p class="resource-note">{c.summary}</p>
-              <p class="resource-brain">
-                <span>brain:</span> <code>raw/{c.brainRaw}.md</code>
-              </p>
             </li>
           ))}
         </ul>

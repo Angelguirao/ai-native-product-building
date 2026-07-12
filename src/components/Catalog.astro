@@ -11,11 +11,11 @@ const { phases } = Astro.props;
 <section class="catalog" aria-label="Curriculum catalog">
   {
     phases.map((phase) => (
-      <details class="catalog-phase" open={phase.lessons.some((l) => l.status === "shipped")}>
+      <details class="catalog-phase" open={phase.lessons.some((l) => l.maturity !== "draft")}>
         <summary>
           <span class="phase-label">{phase.id} — {phase.title}</span>
           <span class="phase-count">
-            {phase.lessons.filter((l) => l.status === "shipped").length} shipped ·
+            {phase.lessons.filter((l) => l.maturity === "refined" || l.maturity === "battle-tested").length} refined ·
             {phase.lessons.length} total
           </span>
         </summary>
@@ -23,7 +23,9 @@ const { phases } = Astro.props;
           {phase.lessons.map((lesson) =>
             lesson.href ? (
               <a class="catalog-lesson" href={lesson.href}>
-                <span class={`status status-${lesson.status}`}>{lesson.status}</span>
+                <span class={`status status-maturity status-maturity-${lesson.maturity}`}>
+                  {lesson.maturity}
+                </span>
                 <span class="lesson-title">{lesson.title}</span>
               </a>
             ) : (

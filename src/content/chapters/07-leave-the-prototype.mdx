@@ -6,6 +6,7 @@ phaseTitle: Shape
 phaseOrder: 2
 order: 7
 status: shipped
+maturity: refined
 ---
 
 import Figure from "../../components/Figure.astro";
@@ -58,9 +59,23 @@ Lovable, Bolt, v0, Figma Make — same decision framework. Pick whichever gets y
 - Rewriting from scratch without carrying forward the **decisions** the prototype validated.
 - Waiting for "one more feature" in no-code because coding feels heavy — that is often fear of ownership, not product sense.
 
+## Scenario (composite)
+
+A founder built a client portal in a vibe tool in four days — impressive demo, one design-agency pilot user. After three weeks the pilot ran onboarding eight times (good signal) but hit: no role separation for junior staff, no invoice webhook, export blocked by the tool's row limits.
+
+They stayed in vibe one more week to confirm the workflow checklist, then migrated vertically: auth first, Postgres schema second, Stripe third. The vibe URL stayed live with a tombstone note. Total migration took twelve days; they did not rewrite screens that were not on the ten-run path.
+
 ## Artifacts
 
-- Migration checklist (add to `templates/`): data model, auth, billing, observability, CI — tick before cutover.
+- [`templates/migration-checklist.md`](https://github.com/Angelguirao/ai-native-product-building/tree/main/templates/migration-checklist.md) — data model, auth, billing, observability, CI — tick before cutover.
+
+## Falsify this
+
+- You have zero paying or committed users but "the UI is done" — that is shape learning, not exit criteria.
+- You have run the workflow twice on the happy path — ten real runs still matter.
+- You are migrating because coding feels virtuous, not because a hard limitation blocked the next experiment.
+- The prototype handles billing in a hack — you postponed ownership because migration is scary.
+- Second engineer onboarding fails immediately — you left too late without tests or deploy docs.
 
 ## Further reading
 

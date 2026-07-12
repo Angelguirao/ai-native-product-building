@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
+import type { ChapterNav } from "../lib/catalog";
 
 type Props = {
   title: string;
@@ -7,21 +8,45 @@ type Props = {
   phase: string;
   phaseTitle: string;
   status: string;
+  maturity: string;
+  nav: ChapterNav;
 };
 
-const { title, description, phase, phaseTitle, status } = Astro.props;
+const { title, description, phase, phaseTitle, status, maturity, nav } =
+  Astro.props;
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} current="catalog">
   <header class="chapter-head">
     <p class="hero-eyebrow">{phase} · {phaseTitle}</p>
     <h1>{title}</h1>
     <div class="chapter-meta">
       <span class={`status status-${status}`}>{status}</span>
+      <span class={`status status-maturity status-maturity-${maturity}`}>
+        {maturity}
+      </span>
       <span>principle → decision → workflow → artifact</span>
     </div>
   </header>
   <article class="prose">
     <slot />
   </article>
+  <nav class="chapter-nav" aria-label="Chapter">
+    {nav.prev ? (
+      <a class="chapter-nav-link chapter-nav-prev" href={`/chapters/${nav.prev.slug}`}>
+        <span class="chapter-nav-label">← Previous</span>
+        <span class="chapter-nav-title">{nav.prev.title}</span>
+      </a>
+    ) : (
+      <span class="chapter-nav-spacer" />
+    )}
+    {nav.next ? (
+      <a class="chapter-nav-link chapter-nav-next" href={`/chapters/${nav.next.slug}`}>
+        <span class="chapter-nav-label">Next →</span>
+        <span class="chapter-nav-title">{nav.next.title}</span>
+      </a>
+    ) : (
+      <span class="chapter-nav-spacer" />
+    )}
+  </nav>
 </BaseLayout>

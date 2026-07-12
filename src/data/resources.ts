@@ -6,8 +6,6 @@ export type HandbookResource = {
   url: string;
   kind: ResourceKind;
   note?: string;
-  /** Path under brain/raw/ — compile with `npm run compile` */
-  brainRaw?: string;
 };
 
 export type FootnotesSpinOut = {
@@ -20,14 +18,12 @@ export type CaseStudy = {
   id: string;
   title: string;
   summary: string;
-  url?: string;
-  brainRaw: string;
   chapters: string[];
 };
 
 export const FOOTNOTES_BASE = "https://angelguirao.com/wiki";
 
-/** Curated resources — raw captures live in brain; chapters improve as synthesis grows. */
+/** Curated public resources — synthesis happens off-site; only links ship here. */
 export const sharedResources: Record<string, HandbookResource> = {
   "making-software": {
     id: "making-software",
@@ -35,7 +31,6 @@ export const sharedResources: Record<string, HandbookResource> = {
     url: "https://www.makingsoftware.com/",
     kind: "essay",
     note: "Essay + diagram rhythm — craft over changelog.",
-    brainRaw: "repos/making-software",
   },
   "ai-engineering-from-scratch": {
     id: "ai-engineering-from-scratch",
@@ -43,7 +38,6 @@ export const sharedResources: Record<string, HandbookResource> = {
     url: "https://aiengineeringfromscratch.com/",
     kind: "repo",
     note: "Catalog spine for technical depth — compare, don't copy.",
-    brainRaw: "repos/ai-engineering-from-scratch",
   },
   "the-builder-pm": {
     id: "the-builder-pm",
@@ -51,7 +45,6 @@ export const sharedResources: Record<string, HandbookResource> = {
     url: "https://thebusinessengineer.gumroad.com/l/the-builder-pm",
     kind: "course",
     note: "Builder PM craft — product judgment for people who ship.",
-    brainRaw: "repos/the-builder-pm",
   },
   "mom-test": {
     id: "mom-test",
@@ -80,25 +73,31 @@ export const spinOuts: Record<string, FootnotesSpinOut> = {
   },
 };
 
+/** Anonymous pattern cards — composite scenarios, not specific products. */
 export const caseStudies: CaseStudy[] = [
   {
-    id: "holzen",
-    title: "Holzen — investor pause ritual",
+    id: "scheduling-concierge",
+    title: "B2B scheduling tool",
     summary:
-      "Shipped product with owned codebase from the start — validation on real capital moves, not demo applause.",
-    url: "https://holzen.app",
-    brainRaw: "notes/practice/ai-native-product-building/case-study-holzen",
-    chapters: [
-      "04-validation",
-      "07-leave-the-prototype",
-      "13-deployment",
-      "14-analytics",
-      "15-iteration",
-    ],
+      "A small team ran a paid concierge for two weeks before app code. They left no-code only after auth and billing limits blocked the next experiment.",
+    chapters: ["04-validation", "07-leave-the-prototype"],
+  },
+  {
+    id: "internal-dashboard",
+    title: "Internal ops dashboard",
+    summary:
+      "Three teams used a vibe-built admin weekly for a month. Migration started with data model and tests; the prototype URL stayed as a learning tombstone.",
+    chapters: ["07-leave-the-prototype", "12-testing"],
+  },
+  {
+    id: "agent-refactor",
+    title: "Multi-file refactor with agents",
+    summary:
+      "Agents proposed a plan across twelve files; humans gated schema and CI changes. Shipped in small PRs with required build checks.",
+    chapters: ["10-agentic-development", "12-testing"],
   },
 ];
 
-/** Per-chapter resource ids + inline extras */
 export const chapterResourceMap: Record<string, HandbookResource[]> = {
   "00-principles": [sharedResources["making-software"]],
   "01-mindset": [sharedResources["the-builder-pm"], sharedResources["making-software"]],

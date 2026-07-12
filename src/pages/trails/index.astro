@@ -1,0 +1,32 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { handbookTrails } from "../../data/trails";
+
+const trails = handbookTrails;
+---
+
+<BaseLayout
+  title="Trails"
+  description="Curated reading paths through the handbook by role and stage."
+  wide={true}
+  current="trails"
+>
+  <p class="hero-eyebrow">Reading paths</p>
+  <h1 class="hero-title" style="font-size: clamp(1.75rem, 4vw, 2.25rem)">Trails</h1>
+  <p class="hero-lede">
+    You do not have to read in catalog order. Pick a trail that matches where you are — solo founder, product engineer, or team lead.
+  </p>
+
+  <ul class="trail-list">
+    {trails.map((trail) => (
+      <li>
+        <a class="trail-card" href={`/trails/${trail.id}`}>
+          <h2>{trail.title}</h2>
+          <p class="trail-audience">{trail.audience}</p>
+          <p class="trail-desc">{trail.description}</p>
+          <p class="trail-meta">{trail.chapterIds.length} chapters</p>
+        </a>
+      </li>
+    ))}
+  </ul>
+</BaseLayout>
