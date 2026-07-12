@@ -1,17 +1,23 @@
 ---
 import { handbookVersion } from "../data/catalog";
 
+type Props = {
+  current?: "about" | "glossary" | "changelog";
+};
+
+const { current } = Astro.props;
 const year = new Date().getFullYear();
 ---
 
 <footer class="site-footer">
   <p>
-  v{handbookVersion} · living handbook · open source · {year}
+    v{handbookVersion} · living handbook · open source · {year}
   </p>
-  <p>
+  <nav class="site-footer-nav" aria-label="Meta">
+    <a href="/glossary" aria-current={current === "glossary" ? "page" : undefined}>Glossary</a>
+    <a href="/changelog" aria-current={current === "changelog" ? "page" : undefined}>Changelog</a>
+    <a href="/about" aria-current={current === "about" ? "page" : undefined}>About</a>
     <a href="https://github.com/Angelguirao/ai-native-product-building">GitHub</a>
-    · <a href="https://angelguirao.com/wiki">footnotes</a>
-    · <a href="/resources">resources</a>
-    · <a href="/about">colophon</a>
-  </p>
+    <a href="https://angelguirao.com/wiki" rel="noopener" class="external-link">footnotes</a>
+  </nav>
 </footer>

@@ -4,6 +4,15 @@ import { handbookVersion } from "../data/catalog";
 
 const changelog = [
   {
+    version: "1.3.0",
+    date: "2026-07-12",
+    items: [
+      "UX pass — slimmer header, homepage entry cards, featured refined chapters",
+      "Chapter breadcrumbs, on-this-page TOC, styled tables, related section",
+      "Decisions grouped by phase with jump nav",
+    ],
+  },
+  {
     version: "1.2.4",
     date: "2026-07-12",
     items: [
@@ -64,7 +73,7 @@ const changelog = [
 ];
 ---
 
-<BaseLayout title="Changelog" description="Handbook version history." current="changelog">
+<BaseLayout title="Changelog" description="Handbook version history." footerCurrent="changelog">
   <p class="hero-eyebrow">v{handbookVersion}</p>
   <h1 class="hero-title" style="font-size: clamp(1.75rem, 4vw, 2.25rem)">Changelog</h1>
   <p class="hero-lede">Versioned in public like software — structure and content bumps tracked here.</p>

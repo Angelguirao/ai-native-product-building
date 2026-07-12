@@ -7,10 +7,11 @@ type Props = {
   title: string;
   description?: string;
   wide?: boolean;
-  current?: "home" | "catalog" | "about" | "glossary" | "decisions" | "trails" | "changelog" | "resources";
+  current?: "home" | "catalog" | "about" | "glossary" | "decisions" | "trails" | "changelog" | "resources" | "chapter";
+  footerCurrent?: "about" | "glossary" | "changelog";
 };
 
-const { title, description, wide = false, current } = Astro.props;
+const { title, description, wide = false, current, footerCurrent } = Astro.props;
 const fullTitle = title === "Home" ? "AI-Native Product Building" : `${title} · AI-Native Product Building`;
 ---
 
@@ -24,11 +25,12 @@ const fullTitle = title === "Home" ? "AI-Native Product Building" : `${title} ·
     <title>{fullTitle}</title>
   </head>
   <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
     <div class="grain" aria-hidden="true"></div>
-    <SiteHeader current={current} />
-    <main class:list={["site-main", wide && "site-main--wide"]}>
+    <SiteHeader current={current === "chapter" ? "catalog" : current} />
+    <main id="main-content" class:list={["site-main", wide && "site-main--wide"]}>
       <slot />
     </main>
-    <SiteFooter />
+    <SiteFooter current={footerCurrent} />
   </body>
 </html>

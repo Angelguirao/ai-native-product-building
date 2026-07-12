@@ -1,36 +1,48 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
+import ChapterToc from "../components/ChapterToc.astro";
 import type { ChapterNav } from "../lib/catalog";
+import type { TocEntry } from "../lib/chapter-toc";
 
 type Props = {
   title: string;
   description: string;
   phase: string;
   phaseTitle: string;
-  status: string;
   maturity: string;
   nav: ChapterNav;
+  toc: TocEntry[];
 };
 
-const { title, description, phase, phaseTitle, status, maturity, nav } =
-  Astro.props;
+const { title, description, phase, phaseTitle, maturity, nav, toc } = Astro.props;
 ---
 
-<BaseLayout title={title} description={description} current="catalog">
+<BaseLayout title={title} description={description} current="chapter">
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="/catalog">Catalog</a>
+    <span class="breadcrumb-sep" aria-hidden="true">/</span>
+    <span class="breadcrumb-phase">{phase} · {phaseTitle}</span>
+    <span class="breadcrumb-sep" aria-hidden="true">/</span>
+    <span class="breadcrumb-current" aria-current="page">{title}</span>
+  </nav>
+
   <header class="chapter-head">
     <p class="hero-eyebrow">{phase} · {phaseTitle}</p>
     <h1>{title}</h1>
     <div class="chapter-meta">
-      <span class={`status status-${status}`}>{status}</span>
       <span class={`status status-maturity status-maturity-${maturity}`}>
         {maturity}
       </span>
       <span>principle → decision → workflow → artifact</span>
     </div>
   </header>
+
+  <ChapterToc entries={toc} />
+
   <article class="prose">
     <slot />
   </article>
+
   <nav class="chapter-nav" aria-label="Chapter">
     {nav.prev ? (
       <a class="chapter-nav-link chapter-nav-prev" href={`/chapters/${nav.prev.slug}`}>

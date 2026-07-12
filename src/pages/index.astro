@@ -1,11 +1,14 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import Catalog from "../components/Catalog.astro";
-import { buildCatalogPhases, getHandbookStats } from "../lib/catalog";
+import EntryCards from "../components/EntryCards.astro";
+import { getHandbookStats, getOrderedChapters } from "../lib/catalog";
 import { handbookVersion } from "../data/catalog";
 
-const phases = await buildCatalogPhases();
 const stats = await getHandbookStats();
+const chapters = await getOrderedChapters();
+const featured = chapters.filter(
+  (c) => c.maturity === "refined" || c.maturity === "battle-tested",
+);
 ---
 
 <BaseLayout
@@ -21,37 +24,64 @@ const stats = await getHandbookStats();
     Decision frameworks that outlive the tools. Versioned in public like software.
   </p>
 
+  <EntryCards />
+
   <section class="panel">
     <h2>How this works</h2>
     <p>
-      Most material teaches tools in scattered pieces. A Lovable post here, a Cursor tip there, an agent demo somewhere else.
-      This handbook is the spine — organized by <strong>decisions founders and product engineers actually make</strong>,
-      not by vendor changelog.
+      Most material teaches tools in scattered pieces. This handbook is the spine — organized by
+      <strong>decisions founders and product engineers actually make</strong>, not by vendor changelog.
     </p>
-    <p>Each chapter runs the same loop: <strong>principle → decision → workflow → artifact</strong>. Tools go last and are allowed to age.</p>
+    <p>Each chapter runs the same loop: <strong>principle → decision → workflow → artifact</strong>.</p>
   </section>
 
   <section class="progress-block">
     <div class="progress-meta">
       <span>{stats.refined} refined · {stats.shipped} shipped · {stats.total} chapters</span>
       <span>v{handbookVersion}</span>
-      <span>updated {new Date().toISOString().slice(0, 10)}</span>
     </div>
-    <div class="progress-bar" role="progressbar" aria-valuenow={stats.progress} aria-valuemin="0" aria-valuemax="100" aria-label="Chapters refined or battle-tested">
+    <div
+      class="progress-bar"
+      role="progressbar"
+      aria-valuenow={stats.progress}
+      aria-valuemin="0"
+      aria-valuemax="100"
+      aria-label="Chapters refined or battle-tested"
+    >
       <span style={`width: ${stats.progress}%`}></span>
     </div>
     <p class="progress-hint">
-      <a href="/trails">Pick a reading trail</a> · <a href="/decisions">Decision registry</a> · <a href="/resources">Resources</a> · <a href="/changelog">Changelog</a>
+      Maturity tracks depth — refined chapters include scenarios and falsifiers.
     </p>
   </section>
 
-  <h2 class="hero-eyebrow" style="margin-top: 2.5rem">Catalog</h2>
-  <p style="color: var(--muted); margin-top: -0.5rem">Tap a phase to expand. Maturity badges show depth — not just ship status.</p>
-  <Catalog phases={phases} />
+  {featured.length > 0 && (
+    <section class="featured-chapters">
+      <h2 class="section-title">Depth pass chapters</h2>
+      <p class="section-intro">Start here for the fullest essays — composite scenarios and falsifiers included.</p>
+      <ul class="featured-list">
+        {featured.map((chapter) => (
+          <li>
+            <a class="featured-card" href={chapter.href}>
+              <span class={`status status-maturity status-maturity-${chapter.maturity}`}>
+                {chapter.maturity}
+              </span>
+              <span class="featured-card-title">{chapter.title}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
 
-  <p style="margin-top: 2rem; font-size: 0.95rem; color: var(--muted)">
-    Inspired by the essay rhythm of <a href="https://www.makingsoftware.com/">Making Software</a>
-    and the catalog clarity of <a href="https://aiengineeringfromscratch.com/">AI Engineering from Scratch</a> —
-    adapted for product builders, in the warm voice of <a href="https://angelguirao.com/wiki">footnotes</a>.
+  <p class="catalog-cta">
+    <a href="/catalog">Full catalog →</a>
+    <span class="catalog-cta-meta">{stats.total} chapters across Discover, Shape, Own, Grow</span>
+  </p>
+
+  <p class="home-credit">
+    Inspired by <a href="https://www.makingsoftware.com/">Making Software</a>
+    and <a href="https://aiengineeringfromscratch.com/">AI Engineering from Scratch</a> —
+    in the voice of <a href="https://angelguirao.com/wiki">footnotes</a>.
   </p>
 </BaseLayout>

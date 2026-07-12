@@ -33,9 +33,9 @@ const steps = trail.chapterIds
   current="trails"
 >
   <p class="hero-eyebrow">
-    <a href="/trails">Trails</a> · {trail.audience}
+    <a href="/trails">Trails</a> · {trail.audience} · {steps.length} chapters
   </p>
-  <h1 class="hero-title" style="font-size: clamp(1.75rem, 4vw, 2.25rem)">{trail.title}</h1>
+  <h1 class="hero-title hero-title--compact">{trail.title}</h1>
   <p class="hero-lede">{trail.description}</p>
 
   <ol class="trail-steps">
@@ -54,7 +54,7 @@ const steps = trail.chapterIds
     ))}
   </ol>
 
-  <p style="margin-top: 2rem">
+  <p style="margin-top: 2rem" class="trail-footer-link">
     <a href="/decisions">View all decisions →</a>
   </p>
 </BaseLayout>

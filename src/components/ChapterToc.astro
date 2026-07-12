@@ -1,0 +1,22 @@
+---
+import type { TocEntry } from "../lib/chapter-toc";
+
+type Props = {
+  entries: TocEntry[];
+};
+
+const { entries } = Astro.props;
+---
+
+{entries.length > 1 && (
+  <nav class="chapter-toc" aria-label="On this page">
+    <p class="chapter-toc-label">On this page</p>
+    <ul>
+      {entries.map((entry) => (
+        <li>
+          <a href={`#${entry.id}`}>{entry.title}</a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+)}

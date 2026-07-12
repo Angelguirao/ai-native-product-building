@@ -44,7 +44,7 @@ const totalResources = groups.reduce((sum, group) => sum + group.items.length, 0
           {group.items.map((resource) => (
             <li class="resource-page-item">
               <div class="resource-page-head">
-                <a href={resource.url} rel="noopener noreferrer">{resource.title}</a>
+                <a href={resource.url} rel="noopener noreferrer" class="external-link">{resource.title}</a>
                 <span class="resource-meta"> · {resource.kind}</span>
               </div>
               {resource.note && <p class="resource-note">{resource.note}</p>}
@@ -75,7 +75,7 @@ const totalResources = groups.reduce((sum, group) => sum + group.items.length, 0
       {footnotesSpinOuts.map((spinOut) => (
         <li class="resource-page-item">
           <div class="resource-page-head">
-            <a href={spinOut.url} rel="noopener noreferrer">{spinOut.title}</a>
+            <a href={spinOut.url} rel="noopener noreferrer" class="external-link">{spinOut.title}</a>
             <span class="resource-meta"> · footnotes</span>
           </div>
           <p class="resource-chapters">

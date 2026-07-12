@@ -18,7 +18,9 @@ const hasContent = resources.length > 0 || spinOut || cases.length > 0;
 ---
 
 {hasContent && (
-  <section class="chapter-resources">
+  <section class="chapter-related" aria-labelledby="chapter-related-heading">
+    <h2 id="chapter-related-heading" class="chapter-related-title">Related</h2>
+    <div class="chapter-resources">
     {spinOut && (
       <div class="resource-block">
         <h2>Related principle</h2>
@@ -27,7 +29,7 @@ const hasContent = resources.length > 0 || spinOut || cases.length > 0;
         </p>
         <ul class="resource-list">
           <li>
-            <a href={spinOut.url} rel="noopener noreferrer">{spinOut.title}</a>
+            <a href={spinOut.url} rel="noopener noreferrer" class="external-link">{spinOut.title}</a>
             <span class="resource-meta"> · footnotes</span>
           </li>
         </ul>
@@ -43,7 +45,7 @@ const hasContent = resources.length > 0 || spinOut || cases.length > 0;
         <ul class="resource-list">
           {resources.map((r) => (
             <li>
-              <a href={r.url} rel="noopener noreferrer">{r.title}</a>
+              <a href={r.url} rel="noopener noreferrer" class="external-link">{r.title}</a>
               <span class="resource-meta"> · {r.kind}</span>
               {r.note && <p class="resource-note">{r.note}</p>}
             </li>
@@ -72,5 +74,6 @@ const hasContent = resources.length > 0 || spinOut || cases.length > 0;
     <p class="resource-all-link">
       <a href="/resources">All resources →</a>
     </p>
+    </div>
   </section>
 )}

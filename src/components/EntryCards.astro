@@ -1,0 +1,32 @@
+---
+const cards = [
+  {
+    href: "/trails",
+    title: "Pick a trail",
+    description: "Role-based paths — solo founder, product engineer, team lead.",
+  },
+  {
+    href: "/decisions",
+    title: "Decision registry",
+    description: "The constitution in one page — when X vs when Y.",
+  },
+  {
+    href: "/chapters/00-principles",
+    title: "Start at principles",
+    description: "Chapter 00 — the durable rules before any tool names.",
+  },
+];
+---
+
+<section class="entry-cards" aria-label="Start here">
+  <ul>
+    {cards.map((card) => (
+      <li>
+        <a class="entry-card" href={card.href}>
+          <span class="entry-card-title">{card.title}</span>
+          <span class="entry-card-desc">{card.description}</span>
+        </a>
+      </li>
+    ))}
+  </ul>
+</section>

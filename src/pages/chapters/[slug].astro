@@ -3,6 +3,7 @@ import { getCollection, render } from "astro:content";
 import ChapterLayout from "../../layouts/ChapterLayout.astro";
 import ChapterResources from "../../components/ChapterResources.astro";
 import { getChapterNav } from "../../lib/catalog";
+import { extractChapterToc } from "../../lib/chapter-toc";
 
 export async function getStaticPaths() {
   const chapters = await getCollection("chapters");
@@ -15,6 +16,7 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const { Content } = await render(entry);
 const nav = await getChapterNav(entry.id);
+const toc = extractChapterToc(entry.id);
 ---
 
 <ChapterLayout
@@ -22,9 +24,9 @@ const nav = await getChapterNav(entry.id);
   description={entry.data.description}
   phase={entry.data.phase}
   phaseTitle={entry.data.phaseTitle}
-  status={entry.data.status}
   maturity={entry.data.maturity}
   nav={nav}
+  toc={toc}
 >
   <Content />
   <ChapterResources chapterId={entry.id} />

@@ -64,3 +64,31 @@ export async function buildDecisionIndex(): Promise<DecisionEntry[]> {
 
   return entries;
 }
+
+export type DecisionPhaseGroup = {
+  phase: string;
+  phaseTitle: string;
+  order: number;
+  decisions: DecisionEntry[];
+};
+
+export function groupDecisionsByPhase(decisions: DecisionEntry[]): DecisionPhaseGroup[] {
+  const map = new Map<string, DecisionPhaseGroup>();
+
+  for (const entry of decisions) {
+    if (!map.has(entry.phase)) {
+      map.set(entry.phase, {
+        phase: entry.phase,
+        phaseTitle: entry.phaseTitle,
+        order: entry.order,
+        decisions: [],
+      });
+    } else {
+      const group = map.get(entry.phase)!;
+      group.order = Math.min(group.order, entry.order);
+    }
+    map.get(entry.phase)!.decisions.push(entry);
+  }
+
+  return [...map.values()].sort((a, b) => a.order - b.order);
+}
