@@ -2,6 +2,7 @@
 import "../styles/global.css";
 import SiteHeader from "../components/SiteHeader.astro";
 import SiteFooter from "../components/SiteFooter.astro";
+import PagefindConfig from "astro-pagefind/components/PagefindConfig.astro";
 
 type Props = {
   title: string;
@@ -23,6 +24,7 @@ const fullTitle = title === "Home" ? "AI-Native Product Building" : `${title} ·
     <meta name="description" content={description ?? "A living handbook for building products when AI changes every step."} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{fullTitle}</title>
+    <PagefindConfig instance="handbook" lang="en" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to content</a>
@@ -32,5 +34,6 @@ const fullTitle = title === "Home" ? "AI-Native Product Building" : `${title} ·
       <slot />
     </main>
     <SiteFooter current={footerCurrent} />
+    <pagefind-modal instance="handbook" reset-on-close="true"></pagefind-modal>
   </body>
 </html>

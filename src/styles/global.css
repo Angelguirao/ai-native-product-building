@@ -783,6 +783,111 @@ a {
   color: var(--muted);
 }
 
+.glossary-section {
+  margin-top: 2rem;
+}
+
+.glossary-letter {
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin: 0 0 0.75rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.glossary-jump {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.5rem;
+  margin: 0 0 1.5rem;
+}
+
+.glossary-jump a {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  text-decoration: none;
+  color: var(--muted);
+  padding: 0.15rem 0.45rem;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+}
+
+.glossary-jump a:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.glossary-chapters {
+  margin: 0.65rem 0 0;
+  font-size: 0.9rem;
+}
+
+.glossary-chapters-label {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-right: 0.35rem;
+}
+
+.chapter-glossary {
+  margin-top: 2.5rem;
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--surface) 80%, var(--bg));
+}
+
+.chapter-glossary-title {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--muted);
+  margin: 0 0 0.75rem;
+}
+
+.chapter-glossary-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1rem;
+}
+
+.chapter-glossary-list a {
+  font-family: var(--display);
+  font-style: italic;
+  text-decoration: none;
+  color: var(--text);
+}
+
+.chapter-glossary-list a:hover {
+  color: var(--accent);
+}
+
+.chapter-glossary-meta {
+  margin: 0.75rem 0 0;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+}
+
+.site-search-trigger {
+  --pf-background: var(--surface);
+  --pf-border: 1px solid var(--border);
+  --pf-border-radius: 4px;
+  --pf-text-color: var(--muted);
+  --pf-primary: var(--accent);
+  margin-right: 0.25rem;
+}
+
+.site-nav pagefind-modal-trigger {
+  display: inline-flex;
+}
+
 .chapter-resources {
   margin-top: 3rem;
   padding-top: 2rem;

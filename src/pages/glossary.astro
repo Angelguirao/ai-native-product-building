@@ -1,92 +1,57 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { glossaryTerms } from "../data/glossary";
+import { getOrderedChapters } from "../lib/catalog";
 
-const terms = [
-  {
-    term: "Iteration bet",
-    def: "A written X/Y/Z release — belief, smallest shippable change, and falsifier — so revision stays intentional.",
-  },
-  {
-    term: "North-star metric",
-    def: "The one number that best reflects whether your current problem bet is winning — tied to behavior, not vanity.",
-  },
-  {
-    term: "Preview deploy",
-    def: "Automatic deployment per PR for verification before production — real URL, not localhost.",
-  },
-  {
-    term: "ADR",
-    def: "Architecture Decision Record — one-page bet with context, rejected options, and consequences; versioned in git.",
-  },
-  {
-    term: "Regression test",
-    def: "A test added when a bug is fixed so the same break cannot return silently.",
-  },
-  {
-    term: "Pair session",
-    def: "A bounded AI coding loop: intent, scoped diff, verify, commit — one concern at a time.",
-  },
-  {
-    term: "Human gate",
-    def: "A step agents must not pass without review — migrations, auth, payments, deploy, secrets.",
-  },
-  {
-    term: "UX taste",
-    def: "Consistent design judgment — clarity, character, and craft — that keeps generated UI from converging on generic defaults.",
-  },
-  {
-    term: "Owned codebase",
-    def: "A repo you control end-to-end: reproducible builds, documented env, migrations, and changes without a vibe-tool export.",
-  },
-  {
-    term: "Smoke test",
-    def: "Smallest demand check — usually a landing page and one CTA — measured with counts, not compliments.",
-  },
-  {
-    term: "Concierge MVP",
-    def: "Manual delivery behind the same promise as the product — validates willingness before automation.",
-  },
-  {
-    term: "Problem bet",
-    def: "A narrow claim about who hurts, how often, and what would falsify it — chosen before building features.",
-  },
-  {
-    term: "Falsifier",
-    def: "An observable outcome that would prove your hypothesis wrong — discovery and vibe sessions need one before you start.",
-  },
-  {
-    term: "Vibe prototype",
-    def: "A fast UI or flow built in a generation-first tool (Lovable, Bolt, v0) to learn shape — not an owned product.",
-  },
-  {
-    term: "Product engineer",
-    def: "Builder who optimizes for outcomes in the world: users, scope, trust, revision speed.",
-  },
-  {
-    term: "Agentic development",
-    def: "Workflows where agents plan, implement, and review with human gates at decisions — not unattended autopilot.",
-  },
-  {
-    term: "Decision framework",
-    def: "A durable when-X / when-Y rule that survives tool churn. The atomic unit of this handbook.",
-  },
-  {
-    term: "Artifact",
-    def: "Spec, checklist, test, or template that makes a decision re-readable later — judgment with a trail.",
-  },
-];
+const chapters = await getOrderedChapters();
+const titles = new Map(chapters.map((c) => [c.slug, c.title]));
+
+const byLetter = new Map<string, typeof glossaryTerms>();
+for (const term of glossaryTerms) {
+  const letter = term.term[0]!.toUpperCase();
+  if (!byLetter.has(letter)) byLetter.set(letter, []);
+  byLetter.get(letter)!.push(term);
+}
+const letters = [...byLetter.keys()].sort();
 ---
 
 <BaseLayout title="Glossary" description="Terms used across the handbook." footerCurrent="glossary">
-  <p class="hero-eyebrow">Reference</p>
+  <p class="hero-eyebrow">Reference · {glossaryTerms.length} terms</p>
   <h1 class="hero-title">Glossary</h1>
+  <p class="hero-lede">
+    Shared vocabulary across chapters — each term links to where it is defined in depth.
+  </p>
 
-  <dl class="glossary-list">
-    {terms.map((item) => (
-      <>
-        <dt>{item.term}</dt>
-        <dd>{item.def}</dd>
-      </>
+  <nav class="glossary-jump" aria-label="Jump to letter">
+    {letters.map((letter) => (
+      <a href={`#letter-${letter}`}>{letter}</a>
     ))}
-  </dl>
+  </nav>
+
+  {letters.map((letter) => (
+    <section class="glossary-section">
+      <h2 class="glossary-letter" id={`letter-${letter}`}>{letter}</h2>
+      <dl class="glossary-list">
+        {byLetter.get(letter)!.map((item) => (
+          <>
+            <dt id={item.id}>{item.term}</dt>
+            <dd>
+              <p>{item.def}</p>
+              <p class="glossary-chapters">
+                <span class="glossary-chapters-label">Chapters:</span>
+                {item.chapters.map((chapterId, index) => (
+                  <>
+                    {index > 0 && ", "}
+                    <a href={`/chapters/${chapterId}`}>
+                      {titles.get(chapterId) ?? chapterId}
+                    </a>
+                  </>
+                ))}
+              </p>
+            </dd>
+          </>
+        ))}
+      </dl>
+    </section>
+  ))}
 </BaseLayout>

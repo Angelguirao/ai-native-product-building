@@ -2,6 +2,11 @@
 
 Handbook version history. The live page mirrors this at [/changelog](https://ai-native-product-building.vercel.app/changelog).
 
+## 1.3.1 — 2026-07-12
+
+- Pagefind search in header — ⌘K / Ctrl+K
+- Glossary chapter cross-links and per-chapter term lists
+
 ## 1.3.0 — 2026-07-12
 
 - UX pass — slimmer header, homepage entry cards, featured refined chapters

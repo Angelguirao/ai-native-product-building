@@ -9,6 +9,13 @@ const { current } = Astro.props;
 <header class="site-header">
   <a class="site-brand" href="/">AI-Native Product Building</a>
   <nav class="site-nav" aria-label="Handbook">
+    <pagefind-modal-trigger
+      instance="handbook"
+      class="site-search-trigger"
+      compact="true"
+      shortcut="mod+k"
+      placeholder="Search"
+    ></pagefind-modal-trigger>
     <a href="/catalog" aria-current={current === "catalog" ? "page" : undefined}>Catalog</a>
     <a href="/trails" aria-current={current === "trails" ? "page" : undefined}>Trails</a>
     <a href="/decisions" aria-current={current === "decisions" ? "page" : undefined}>Decisions</a>

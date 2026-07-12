@@ -2,6 +2,7 @@
 import { getCollection, render } from "astro:content";
 import ChapterLayout from "../../layouts/ChapterLayout.astro";
 import ChapterResources from "../../components/ChapterResources.astro";
+import ChapterGlossary from "../../components/ChapterGlossary.astro";
 import { getChapterNav } from "../../lib/catalog";
 import { extractChapterToc } from "../../lib/chapter-toc";
 
@@ -29,5 +30,6 @@ const toc = extractChapterToc(entry.id);
   toc={toc}
 >
   <Content />
+  <ChapterGlossary chapterId={entry.id} />
   <ChapterResources chapterId={entry.id} />
 </ChapterLayout>

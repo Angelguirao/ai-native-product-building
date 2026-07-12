@@ -2,6 +2,7 @@
 import { defineConfig } from "astro/config";
 import mdx from "@astrojs/mdx";
 import rehypeSlug from "rehype-slug";
+import pagefind from "astro-pagefind";
 
 // https://astro.build/config
 export default defineConfig({
@@ -9,5 +10,13 @@ export default defineConfig({
   markdown: {
     rehypePlugins: [rehypeSlug],
   },
-  integrations: [mdx()],
+  integrations: [
+    mdx(),
+    pagefind({
+      indexConfig: {
+        rootSelector: "main",
+        excludeSelectors: [".site-header", ".site-footer", ".skip-link", ".grain"],
+      },
+    }),
+  ],
 });

@@ -1,0 +1,26 @@
+---
+import { glossaryTerms } from "../data/glossary";
+
+type Props = {
+  chapterId: string;
+};
+
+const { chapterId } = Astro.props;
+const terms = glossaryTerms.filter((t) => t.chapters.includes(chapterId));
+---
+
+{terms.length > 0 && (
+  <aside class="chapter-glossary" aria-labelledby="chapter-glossary-heading">
+    <h2 id="chapter-glossary-heading" class="chapter-glossary-title">Terms in this chapter</h2>
+    <ul class="chapter-glossary-list">
+      {terms.map((term) => (
+        <li>
+          <a href={`/glossary#${term.id}`}>{term.term}</a>
+        </li>
+      ))}
+    </ul>
+    <p class="chapter-glossary-meta">
+      <a href="/glossary">Full glossary →</a>
+    </p>
+  </aside>
+)}
