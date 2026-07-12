@@ -2,6 +2,11 @@
 
 Handbook version history. The live page mirrors this at [/changelog](https://ai-native-product-building.vercel.app/changelog).
 
+## 1.2.2 — 2026-07-12
+
+- Footnotes spin-outs: Builders over handoffs (ch. 01), Deliberate generalism (ch. 02)
+- Synthesis from Builder Manifesto and generalists reading list
+
 ## 1.2.1 — 2026-07-12
 
 - Resources page at `/resources` — all sources mapped to chapters

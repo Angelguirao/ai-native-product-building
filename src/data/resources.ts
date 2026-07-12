@@ -175,6 +175,16 @@ export const spinOuts: Record<string, Omit<FootnotesSpinOut, "chapterId">> = {
     title: "Principles before tools",
     url: `${FOOTNOTES_BASE}/thought/principles-before-tools.html`,
   },
+  "01-mindset": {
+    slug: "builder-archetype",
+    title: "Builders over handoffs",
+    url: `${FOOTNOTES_BASE}/thought/builder-archetype.html`,
+  },
+  "02-finding-problems": {
+    slug: "strategic-generalist",
+    title: "Deliberate generalism",
+    url: `${FOOTNOTES_BASE}/thought/strategic-generalist.html`,
+  },
   "04-validation": {
     slug: "validation-before-vibes",
     title: "Validation before vibes",
