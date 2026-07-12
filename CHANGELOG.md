@@ -2,6 +2,10 @@
 
 Handbook version history. The live page mirrors this at [/changelog](https://ai-native-product-building.vercel.app/changelog).
 
+## 1.2.4 — 2026-07-12
+
+- Chapters 11 and 17 reference new footnotes spin-outs in principle and further reading
+
 ## 1.2.3 — 2026-07-12
 
 - Footnotes spin-outs: AI-native not bolted on (ch. 11), Organization as intelligence (ch. 17)

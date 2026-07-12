@@ -18,6 +18,8 @@ Architecture is the set of **bets that are expensive to reverse** — data model
 
 Good architecture for AI-native teams is **legible**: you can draw it on a whiteboard, name the modules, and say what is forbidden to import across boundaries. If only the model understands the structure, you do not have architecture — you have luck.
 
+Before you draw boxes, name the **product category**: bolted-on (AI is a feature), enhanced (AI improves a traditional loop), or native (remove the model and the product breaks). That label sets which layers you must own — orchestration, context, data, evaluation, agents. See [AI-native, not bolted on](https://angelguirao.com/wiki/thought/ai-native-not-bolted-on.html) for the compressed decision frame.
+
 ## The decision
 
 <Decision>
@@ -99,6 +101,7 @@ Mermaid or Excalidraw for diagrams. ADR templates in repo. Linters for module bo
 
 ## Further reading
 
+- [AI-native, not bolted on](https://angelguirao.com/wiki/thought/ai-native-not-bolted-on.html) — footnotes spin-out from this chapter
 - Chapter 08 — Owning the codebase
 - Chapter 10 — Agentic development
 - Chapter 12 — Testing and maintainability
