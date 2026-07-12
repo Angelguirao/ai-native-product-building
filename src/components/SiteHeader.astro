@@ -1,6 +1,6 @@
 ---
 type Props = {
-  current?: "home" | "catalog" | "about" | "glossary" | "decisions" | "trails" | "changelog";
+  current?: "home" | "catalog" | "about" | "glossary" | "decisions" | "trails" | "changelog" | "resources";
 };
 
 const { current } = Astro.props;
@@ -12,6 +12,7 @@ const { current } = Astro.props;
     <a href="/catalog" aria-current={current === "catalog" ? "page" : undefined}>Catalog</a>
     <a href="/trails" aria-current={current === "trails" ? "page" : undefined}>Trails</a>
     <a href="/decisions" aria-current={current === "decisions" ? "page" : undefined}>Decisions</a>
+    <a href="/resources" aria-current={current === "resources" ? "page" : undefined}>Resources</a>
     <a href="/glossary" aria-current={current === "glossary" ? "page" : undefined}>Glossary</a>
     <a href="/changelog" aria-current={current === "changelog" ? "page" : undefined}>Changelog</a>
     <a href="/about" aria-current={current === "about" ? "page" : undefined}>About</a>

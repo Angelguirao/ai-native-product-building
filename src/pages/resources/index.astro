@@ -1,0 +1,119 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import {
+  RESOURCE_KIND_LABELS,
+  caseStudies,
+  footnotesSpinOuts,
+  getResourcesByKind,
+} from "../../data/resources";
+import { getOrderedChapters } from "../../lib/catalog";
+
+const groups = getResourcesByKind();
+const chapters = await getOrderedChapters();
+const chapterTitles = new Map(chapters.map((chapter) => [chapter.slug, chapter.title]));
+const totalResources = groups.reduce((sum, group) => sum + group.items.length, 0);
+---
+
+<BaseLayout
+  title="Resources"
+  description="External books, courses, essays, and articles that inform the handbook — mapped to chapters."
+  wide={true}
+  current="resources"
+>
+  <p class="hero-eyebrow">Reference · {totalResources} sources</p>
+  <h1 class="hero-title">Resources</h1>
+  <p class="hero-lede">
+    Curated links captured from reading and practice — not dumps, but sources that shaped decisions in the handbook.
+    Open a chapter for workflow and artifacts; come here when you want the wider context.
+  </p>
+
+  <section class="panel">
+    <h2>How this list works</h2>
+    <p>
+      Draft notes and synthesis stay private. Only <strong>public URLs</strong> ship here, mapped to the chapters they inform.
+      When a principle is sharp enough to stand alone, it may also appear on
+      <a href="https://angelguirao.com/wiki">footnotes</a> as a spin-out essay.
+    </p>
+  </section>
+
+  {
+    groups.map((group) => (
+      <section class="resources-group">
+        <h2 class="resources-group-title">{group.label}</h2>
+        <ul class="resource-list resources-page-list">
+          {group.items.map((resource) => (
+            <li class="resource-page-item">
+              <div class="resource-page-head">
+                <a href={resource.url} rel="noopener noreferrer">{resource.title}</a>
+                <span class="resource-meta"> · {resource.kind}</span>
+              </div>
+              {resource.note && <p class="resource-note">{resource.note}</p>}
+              <p class="resource-chapters">
+                <span class="resource-chapters-label">Chapters:</span>
+                {resource.chapters.map((chapterId, index) => (
+                  <>
+                    {index > 0 && ", "}
+                    <a href={`/chapters/${chapterId}`}>
+                      {chapterTitles.get(chapterId) ?? chapterId}
+                    </a>
+                  </>
+                ))}
+              </p>
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))
+  }
+
+  <section class="resources-group">
+    <h2 class="resources-group-title">Footnotes spin-outs</h2>
+    <p class="resource-intro">
+      Distilled principles on the public wiki — tighter essays linked from chapters.
+    </p>
+    <ul class="resource-list resources-page-list">
+      {footnotesSpinOuts.map((spinOut) => (
+        <li class="resource-page-item">
+          <div class="resource-page-head">
+            <a href={spinOut.url} rel="noopener noreferrer">{spinOut.title}</a>
+            <span class="resource-meta"> · footnotes</span>
+          </div>
+          <p class="resource-chapters">
+            <span class="resource-chapters-label">Chapter:</span>{" "}
+            <a href={`/chapters/${spinOut.chapterId}`}>
+              {chapterTitles.get(spinOut.chapterId) ?? spinOut.chapterId}
+            </a>
+          </p>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section class="resources-group">
+    <h2 class="resources-group-title">Pattern cards</h2>
+    <p class="resource-intro">
+      Anonymous composite scenarios — useful shapes from practice, not named products.
+    </p>
+    <ul class="resource-list resources-page-list">
+      {caseStudies.map((card) => (
+        <li class="resource-page-item">
+          <div class="resource-page-head">
+            <strong>{card.title}</strong>
+          </div>
+          <p class="resource-note">{card.summary}</p>
+          <p class="resource-chapters">
+            <span class="resource-chapters-label">Chapters:</span>
+            {card.chapters.map((chapterId, index) => (
+              <>
+                {index > 0 && ", "}
+                <a href={`/chapters/${chapterId}`}>
+                  {chapterTitles.get(chapterId) ?? chapterId}
+                </a>
+              </>
+            ))}
+          </p>
+        </li>
+      ))}
+    </ul>
+  </section>
+</BaseLayout>

@@ -2,6 +2,13 @@
 
 Handbook version history. The live page mirrors this at [/changelog](https://ai-native-product-building.vercel.app/changelog).
 
+## 1.2.1 — 2026-07-12
+
+- Resources page at `/resources` — all sources mapped to chapters
+- Six new sources from brain captures (Thinking.inc guide, Builder Manifesto, generalists list, Thinking Machines, Block, It's Time to Build)
+- Expanded chapter mappings for existing resources
+- Rewritten About page
+
 ## 1.2.0 — 2026-07-12
 
 - Maturity labels (`shipped` / `refined`) and honest homepage progress

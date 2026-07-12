@@ -130,6 +130,73 @@ a {
   margin-top: 0;
 }
 
+.about-links {
+  margin: 1rem 0 0;
+  padding-left: 1.25rem;
+}
+
+.about-links li {
+  margin-bottom: 0.65rem;
+}
+
+.about-links a {
+  text-decoration: none;
+}
+
+.about-links a:hover {
+  text-decoration: underline;
+}
+
+.about-trails-hint {
+  margin: 1.25rem 0 0;
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+.about-loop {
+  margin: 1rem 0;
+  padding-left: 1.35rem;
+}
+
+.about-loop li {
+  margin-bottom: 0.5rem;
+}
+
+.about-maturity {
+  margin: 1.25rem 0;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.5rem 1rem;
+  align-items: baseline;
+}
+
+.about-maturity dt {
+  margin: 0;
+}
+
+.about-maturity dd {
+  margin: 0;
+  color: var(--muted);
+}
+
+.about-clone {
+  margin: 1rem 0;
+  padding: 0.85rem 1rem;
+  background: color-mix(in srgb, var(--border) 35%, var(--surface));
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow-x: auto;
+}
+
+.about-clone code {
+  font-family: var(--mono);
+  font-size: 0.82rem;
+}
+
+.panel--muted {
+  background: color-mix(in srgb, var(--surface) 60%, var(--bg));
+}
+
 .progress-block {
   margin: 2rem 0;
 }
@@ -522,6 +589,62 @@ a {
 .changelog-entry li {
   margin-bottom: 0.35rem;
   color: var(--muted);
+}
+
+.resources-group {
+  margin: 2.5rem 0 0;
+}
+
+.resources-group-title {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--muted);
+  margin: 0 0 1rem;
+}
+
+.resources-page-list {
+  border-top: 1px solid var(--border);
+}
+
+.resource-page-item {
+  padding: 1.15rem 0;
+}
+
+.resource-page-head {
+  font-size: 1.05rem;
+}
+
+.resource-page-head a {
+  text-decoration: none;
+  font-style: italic;
+  font-family: var(--display);
+  color: var(--text);
+}
+
+.resource-page-head a:hover {
+  color: var(--accent);
+}
+
+.resource-chapters {
+  margin: 0.5rem 0 0;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.resource-chapters-label {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-right: 0.35rem;
+}
+
+.resource-all-link {
+  margin: 1.5rem 0 0;
+  font-family: var(--mono);
+  font-size: 0.78rem;
 }
 
 .chapter-head {

@@ -1,35 +1,123 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { handbookVersion } from "../data/catalog";
+import { getHandbookStats } from "../lib/catalog";
+
+const stats = await getHandbookStats();
+const repoUrl = "https://github.com/Angelguirao/ai-native-product-building";
 ---
 
-<BaseLayout title="About" description="Colophon and how to use this handbook." current="about">
-  <p class="hero-eyebrow">Colophon</p>
+<BaseLayout
+  title="About"
+  description="Who this handbook is for, how to read it, and how it stays versioned in public."
+  wide={true}
+  current="about"
+>
+  <p class="hero-eyebrow">Colophon · v{handbookVersion}</p>
   <h1 class="hero-title">About</h1>
+  <p class="hero-lede">
+    A living handbook for founders and product engineers building when AI changes every step —
+    not another tool tutorial, but decisions that survive the next model release.
+  </p>
 
-  <div class="prose">
-    <p>
-      <strong>AI-Native Product Building</strong> is a living handbook by
-      <a href="https://angelguirao.com/">Angel Guirao</a> — product-minded engineer, venture builder, backend at scale.
-      It sits beside <a href="https://angelguirao.com/">mesh</a> and <a href="https://angelguirao.com/wiki">footnotes</a> in the public stack.
+  <section class="panel">
+    <h2>Start here</h2>
+    <p>You do not need to read eighteen chapters in order. Pick an entry point:</p>
+    <ul class="about-links">
+      <li>
+        <a href="/trails"><strong>Trails</strong></a>
+        <span> — curated paths by role (solo founder, product engineer, team lead, discover → shape).</span>
+      </li>
+      <li>
+        <a href="/decisions"><strong>Decisions</strong></a>
+        <span> — the constitution in one page; open chapters when you need workflow and artifacts.</span>
+      </li>
+      <li>
+        <a href="/catalog"><strong>Catalog</strong></a>
+        <span> — full curriculum by phase: Discover, Shape, Own, Grow.</span>
+      </li>
+      <li>
+        <a href="/resources"><strong>Resources</strong></a>
+        <span> — books, courses, and articles mapped to chapters — the wider reading list.</span>
+      </li>
+      <li>
+        <a href="/glossary"><strong>Glossary</strong></a>
+        <span> — shared vocabulary across chapters (falsifier, human gate, iteration bet, …).</span>
+      </li>
+    </ul>
+    <p class="about-trails-hint">
+      Not sure? Try <a href="/trails/solo-founder">Solo founder</a> if you are validating alone, or
+      <a href="/trails/product-engineer">Product engineer</a> if you already own a codebase.
     </p>
+  </section>
 
-    <h2>Source</h2>
+  <section class="panel">
+    <h2>What each chapter is</h2>
+    <p>Every chapter runs the same loop — judgment with a trail, not a hot take:</p>
+    <ol class="about-loop">
+      <li><strong>Principle</strong> — the durable claim</li>
+      <li><strong>Decision</strong> — when to do X vs Y (also in the <a href="/decisions">registry</a>)</li>
+      <li><strong>Workflow</strong> — steps you can run this week</li>
+      <li><strong>Artifact</strong> — template, checklist, or test that makes the decision re-readable</li>
+    </ol>
+    <p>Tool names appear last and are allowed to age. The frameworks are what you keep.</p>
+  </section>
+
+  <section class="panel">
+    <h2>Maturity</h2>
     <p>
-      Chapters live as MDX in GitHub. Drafts start in <strong>brain</strong> (private folio); shipped chapters promote here.
-      Individual principles may spin out to footnotes when sharp enough to stand alone.
+      Chapters are labeled so progress means depth, not just existence.
+      Right now: <strong>{stats.refined} refined</strong>, <strong>{stats.shipped} shipped</strong>,
+      <strong>{stats.total} total</strong>.
     </p>
-
-    <h2>Versioning</h2>
+    <dl class="about-maturity">
+      <dt><span class="status status-maturity status-maturity-shipped">shipped</span></dt>
+      <dd>Readable v1 — full loop present, ready to use.</dd>
+      <dt><span class="status status-maturity status-maturity-refined">refined</span></dt>
+      <dd>Depth pass — composite scenario, falsifiers, tighter artifacts.</dd>
+      <dt><span class="status status-maturity status-maturity-battle-tested">battle-tested</span></dt>
+      <dd>Used on real bets with revision after signal (reserved for later).</dd>
+    </dl>
     <p>
-      Current handbook version: <strong>v{handbookVersion}</strong>. See the <a href="/changelog">changelog</a> for structure and content bumps.
-      This is not a finished book — it is software-shaped writing. Ship a chapter, gather signal, revise.
+      Bumps are tracked in the <a href="/changelog">changelog</a>. This is software-shaped writing:
+      ship, gather signal, revise.
     </p>
+  </section>
 
-    <h2>License</h2>
-    <p>MIT. Fork, cite, teach — keep the decision frameworks, replace the tooling.</p>
+  <section class="panel">
+    <h2>Author</h2>
+    <p>
+      Written by <a href="https://angelguirao.com/">Angel Guirao</a> — product-minded engineer who has shipped
+      at venture scale and cared about backends that do not wake you at 3am.
+    </p>
+    <p>
+      This handbook sits in the public stack beside
+      <a href="https://angelguirao.com/">mesh</a> (work and writing) and
+      <a href="https://angelguirao.com/wiki">footnotes</a> (distilled principles).
+      Sharp ideas from chapters may spin out to footnotes when they deserve a shorter essay.
+    </p>
+  </section>
 
-    <h2>Clone</h2>
-    <pre><code>git clone https://github.com/Angelguirao/ai-native-product-building.git</code></pre>
-  </div>
+  <section class="panel">
+    <h2>Source &amp; license</h2>
+    <p>
+      Chapters live as MDX in <a href={repoUrl} rel="noopener noreferrer">GitHub</a>.
+      MIT — fork, cite, teach. Keep the decision frameworks; replace the tooling with whatever ships next month.
+    </p>
+    <pre class="about-clone"><code>git clone {repoUrl}.git</code></pre>
+    <p>
+      Templates for artifacts live in <code>templates/</code> in the repo
+      (validation experiments, migration checklists, agent boundaries, ADRs).
+    </p>
+  </section>
+
+  <section class="panel panel--muted">
+    <h2>Influences</h2>
+    <p>
+      Essay rhythm from <a href="https://www.makingsoftware.com/">Making Software</a>,
+      catalog spine from <a href="https://aiengineeringfromscratch.com/">AI Engineering from Scratch</a>,
+      warm voice from <a href="https://angelguirao.com/wiki">footnotes</a> —
+      adapted for people who own product outcomes, not just prompts.
+    </p>
+  </section>
 </BaseLayout>
