@@ -195,6 +195,16 @@ export const spinOuts: Record<string, Omit<FootnotesSpinOut, "chapterId">> = {
     title: "Leave the prototype",
     url: `${FOOTNOTES_BASE}/thought/leave-the-prototype.html`,
   },
+  "11-architecture": {
+    slug: "ai-native-not-bolted-on",
+    title: "AI-native, not bolted on",
+    url: `${FOOTNOTES_BASE}/thought/ai-native-not-bolted-on.html`,
+  },
+  "17-teams": {
+    slug: "hierarchy-to-intelligence",
+    title: "Organization as intelligence",
+    url: `${FOOTNOTES_BASE}/thought/hierarchy-to-intelligence.html`,
+  },
 };
 
 export const footnotesSpinOuts: FootnotesSpinOut[] = Object.entries(spinOuts).map(

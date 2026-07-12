@@ -2,6 +2,11 @@
 
 Handbook version history. The live page mirrors this at [/changelog](https://ai-native-product-building.vercel.app/changelog).
 
+## 1.2.3 — 2026-07-12
+
+- Footnotes spin-outs: AI-native not bolted on (ch. 11), Organization as intelligence (ch. 17)
+- Synthesis from Thinking.inc build guide and Block org-design essay
+
 ## 1.2.2 — 2026-07-12
 
 - Footnotes spin-outs: Builders over handoffs (ch. 01), Deliberate generalism (ch. 02)
