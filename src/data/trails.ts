@@ -43,9 +43,10 @@ export const handbookTrails: HandbookTrail[] = [
     title: "Team lead",
     audience: "Setting standards for a small product team",
     description:
-      "Principles, architecture, analytics loops, iteration rhythm, and governance when AI multiplies output.",
+      "Principles, product engineering OS, architecture, analytics loops, iteration rhythm, and governance when AI multiplies output.",
     chapterIds: [
       "00-principles",
+      "11-product-engineering-os",
       "11-architecture",
       "14-analytics",
       "15-iteration",

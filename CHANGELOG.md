@@ -2,6 +2,10 @@
 
 Handbook version history. The live page mirrors this at [/changelog](https://ai-native-product-building.vercel.app/changelog).
 
+## 1.4.2 — 2026-07-14
+
+- Team lead trail includes **Product engineering OS** chapter (loops, skills, MCPs, agents before architecture governance)
+
 ## 1.4.1 — 2026-07-14
 
 - Lenny corpus resource — discovery + product engineering OS; query template `templates/lenny-corpus-query.md`
