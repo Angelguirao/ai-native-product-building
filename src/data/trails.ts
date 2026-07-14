@@ -27,9 +27,10 @@ export const handbookTrails: HandbookTrail[] = [
     title: "Product engineer",
     audience: "Builder who owns outcomes and code",
     description:
-      "Mindset, owning the codebase, pair programming, agents with gates, and tests that survive refactors.",
+      "Mindset, product engineering OS, owning the codebase, pair programming, agents with gates, and tests that survive refactors.",
     chapterIds: [
       "01-mindset",
+      "11-product-engineering-os",
       "08-owning-the-codebase",
       "09-ai-pair-programming",
       "10-agentic-development",

@@ -2,7 +2,7 @@
 
 A **living handbook** for building products when AI changes every step — principles and decision frameworks that outlive the tools.
 
-**v1.2** · maturity labels · decisions · trails · [live site](https://ai-native-product-building.vercel.app) · [catalog](/catalog) · [resource loop](docs/RESOURCE-LOOP.md)
+**v1.4** · product engineering OS · maturity labels · decisions · trails · [live site](https://ai-native-product-building.vercel.app) · [catalog](/catalog) · [resource loop](docs/RESOURCE-LOOP.md)
 
 ## What this is
 
@@ -12,8 +12,9 @@ A **living handbook** for building products when AI changes every step — princ
 
 Inspired by the essay rhythm of [Making Software](https://www.makingsoftware.com/) and the catalog structure of [AI Engineering from Scratch](https://aiengineeringfromscratch.com/), in the warm voice of [footnotes](https://angelguirao.com/wiki).
 
-## v1.2 highlights
+## v1.4 highlights
 
+- **Product engineering OS** — loops, skills, tools, MCPs, agents; personal vs organizational compound (chapter 11)
 - **Maturity** — chapters labeled `shipped` or `refined`; progress bar counts depth, not just existence
 - **Decisions** — [`/decisions`](https://ai-native-product-building.vercel.app/decisions) registry for quick reference
 - **Trails** — role-based reading paths at [`/trails`](https://ai-native-product-building.vercel.app/trails)

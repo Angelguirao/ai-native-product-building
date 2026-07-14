@@ -1,0 +1,207 @@
+---
+title: Product engineering OS
+description: Beyond scattered chatbots — loops, skills, tools, MCPs, and agents wired into memory and frameworks that compound.
+phase: "03"
+phaseTitle: Own
+phaseOrder: 3
+order: 11
+status: shipped
+maturity: refined
+---
+
+import Figure from "../../components/Figure.astro";
+import Decision from "../../components/Decision.astro";
+
+## Principle
+
+**AI-native product engineering** is not a better chat window. It is an **operating system**: specialized agents, long-term memory, built-in frameworks, and tool access that run research, operations, and analysis without re-onboarding every session.
+
+Scattered copilots make **individuals** dramatically faster. That feels like transformation — and it is, but it transforms people, not organizations. The same work could compound into **systems the company keeps**, each one making the next build easier. Most teams have not made that turn yet. See [Product engineering OS](https://angelguirao.com/wiki/thought/product-engineering-os.html) for the compressed footnotes version.
+
+Automating a task does not make it a system. A cron job that runs your personal habit on a timer still produces output and leaves nothing behind. Nothing accrues. The line between personal and organizational was never manual versus automated — it is **whether artifacts, memory, and routing survive the person who set it up**.
+
+## The decision
+
+<Decision>
+  **Build or adopt a product engineering OS** when you repeat the same context setup, run multi-step PM or build motions weekly, or need judgment that compounds across sessions — strategy, discovery, ship, and ops in one workspace.
+
+  **Stay ad hoc** while you are falsifying a single bet with one builder for a few days. Do not install an OS to avoid the discomfort of choosing what to build.
+</Decision>
+
+<Figure id="DEC_019" caption="The OS sits above tools — it routes problems to capability and keeps what matters.">
+  <pre><code>  Context + memory (files you control)
+        │
+        ▼
+  Loops + workflows (multi-step motions)
+        │
+        ▼
+  Skills + subagents (domain procedures)
+        │
+        ▼
+  Tools + MCPs (editors, live connectors)
+        │
+        ▼
+  Product agents (orchestrators like Remy)</code></pre>
+</Figure>
+
+## The stack — five inventories
+
+Treat these as **layers you can audit**, not a shopping list. A working OS has at least one strong entry in each row.
+
+### Loops
+
+Repeatable motions that **leave artifacts** — not one-off prompts.
+
+| Loop | What it closes | Example |
+|------|----------------|---------|
+| **Chapter loop** | Principle → decision → workflow → artifact | This handbook's unit of work |
+| **Pair loop** | Intent → diff → verify → commit | Chapter 09 — one concern at a time |
+| **Agent loop** | Plan → act → observe → human gate | Chapter 10 — fenced autonomy |
+| **Discovery loop** | Transcript → insight → hypothesis → experiment | PM OS `/workflow:research` |
+| **Memory loop** | Capture → grow → recall → compound | PM OS `/capture-memory`, context files |
+| **Revision loop** | Signal → iteration bet → ship → measure | Chapters 14–15 |
+| **Resource loop** | External source → synthesis → chapter update | Handbook `docs/RESOURCE-LOOP.md` |
+
+A loop that ends in chat history alone is not organizational infrastructure yet.
+
+### Skills
+
+**Context-activated procedures** — the model reads `SKILL.md` (or equivalent) when the task matches, instead of you pasting a prompt from a graveyard.
+
+| Kind | Role | Examples |
+|------|------|----------|
+| **Single-shot skills** | One PM or eng task with a clear output | JTBD extraction, difficult-conversation script, ADR draft |
+| **Workflow skills** | Chained skills in order | `/workflow:strategy`, `/workflow:prd`, `/workflow:decisions` |
+| **Repo skills** | Conventions for agents in *your* codebase | Lint rules, test patterns, deploy steps in `AGENTS.md` |
+
+[AI PM OS](https://www.prodmgmt.world/ai-pm-os) ships **242 PM skills** and **11 guided workflows** for Claude Code, Cowork, and Cursor — a packaged reference for what "enough density" looks like. Your OS can be smaller; it cannot be zero skills and still call itself an OS.
+
+### Tools
+
+Editors and runtimes where work **already lives** — not another tab you close.
+
+| Layer | Purpose | Examples (2026) |
+|-------|---------|-----------------|
+| **AI-native editor** | Files + agent in one workspace | Cursor, Claude Code, Claude Cowork |
+| **Repo + CI** | Verify before trust | GitHub Actions, Vercel checks |
+| **Deploy + observability** | Ship rhythm, rollback | Vercel, logs, error tracking |
+| **Product surface** | Where users meet the bet | Your shipped app — not the OS itself |
+
+Tools age in weeks. The OS **routes** to them; it does not become them.
+
+### MCPs
+
+**Model Context Protocol connectors** — live read/write to systems of record, so workflows do not copy-paste stale exports.
+
+| Connector | Typical use in product engineering |
+|-----------|--------------------------------------|
+| **Issue tracker** | Pull scope, post updates (Linear, Jira) |
+| **Docs / wiki** | Read PRDs, write decisions (Notion, Confluence) |
+| **Code** | PR context, issues (GitHub) |
+| **Research** | Cited web or corpus search (Perplexity, docs MCPs) |
+| **Domain** | Stripe, Supabase, Figma — whatever your product touches |
+
+PM OS documents **six live MCP connectors** as the pattern: Lenny corpus, Notion, Linear, Atlassian, GitHub, Perplexity. Your stack should match **where your truth lives**, not a generic integration catalog.
+
+### Agents
+
+Orchestrators and specialists — longer autonomy, clearer fences.
+
+| Agent class | Job | Examples |
+|-------------|-----|----------|
+| **Coding agent** | Implementation in repo scope | Claude Code, Cursor agent, Codex |
+| **Review subagents** | Multi-perspective critique on demand | PM OS engineering / design / devil's advocate reviewers |
+| **Product agent teams** | Idea → spec → app → roadmap → ops | [Remy](https://goremy.ai/) — coding, design, roadmap, QA, architecture, research agents under one product agent |
+| **Steward / router** | Daily attention, capture, cross-project memory | PersonalOS-style desk — your executive layer |
+
+[Remy](https://goremy.ai/) is the **general contractor** metaphor: you bring vision; it coordinates specialists, ships to production, and keeps working post-launch (roadmap, marketing, analytics, support). That is product-engineering OS at **product** scope — not just repo scope.
+
+Contrast with a **coding agent alone**: skilled at the wall, not the house. Someone still designs the house, picks materials, and shows up when something breaks. The OS owns **coordination and memory**; agents own **execution slices**.
+
+## Harness engineering
+
+Models are commodities; **harnesses** are not. Alex Ker’s [architect’s guide to harness engineering](https://x.com/thealexker/status/2076741193367761378) frames the choice: which wrapper compresses your thinking, your team’s feedback, and the model’s capability into something **replicable**?
+
+Without a harness, AI works for you. With one, AI works for your **team** — same gates, same context files, same workflows, same MCP boundaries.
+
+Gennaro Cuofano’s [Business Engineer Agent OS](https://businessengineer.ai/p/the-business-engineer-agent-os) pushes the same idea for Builder-PMs: an operating substrate for agentic product work, not a prompt pack. The [Builder-PM](https://businessengineer.ai/p/the-builder-pm-manifesto) role assumes that substrate exists — prototype as spec, loops owned, bets on the capability overhang.
+
+When evaluating build vs buy for your harness:
+
+| Question | Good sign | Bad sign |
+|----------|-----------|----------|
+| Memory | Context in files you control; confirmation-gated writes | Re-paste company brief every chat |
+| Routing | Problem type → workflow/skill automatically | You hunt Notion for the right prompt |
+| Compounding | Decisions and artifacts update shared context | Output dies in thread |
+| Governance | Human gates on schema, pay, deploy | Agent merged to prod alone |
+
+## Personal speed vs organizational compound
+
+| | Personal automation | Organizational system |
+|--|---------------------|------------------------|
+| **Runs on** | Your calendar, your memory | Shared files, CI, connectors |
+| **Leaves behind** | Maybe a doc if you remember | Decisions, specs, tests, memory entries |
+| **Survives you** | No | Should — that's the point |
+| **Looks like** | "I'm so much faster" | "The next bet took half the time" |
+
+Remy's essay thread [*The Compounding Organization*](https://goremy.ai/) names why AI productivity often does not last: gains stay local. Product engineering OS is how you **institutionalize** the loops that worked once.
+
+## Reference stacks (2026)
+
+| Stack | Best for | You get |
+|-------|----------|---------|
+| **[AI PM OS](https://www.prodmgmt.world/ai-pm-os)** | PM judgment in editor | 242 skills, 11 workflows, 12 subagents, 6 MCPs, 5 context files — "CPO in a box" |
+| **[Remy](https://goremy.ai/)** | Idea → production product | Multi-agent team + deploy + post-ship ops |
+| **Business Engineer Agent OS** | Builder-PM transition | Harness + workshop patterns (Cuofano) |
+| **DIY editor OS** | Teams with eng ownership | Cursor/Claude Code + `AGENTS.md` + skills + MCPs + context folder + your loops |
+
+This handbook is the **decision spine** for DIY stacks. PM OS and Remy are **reference implementations** at different scopes — buy or study them when building your own would take quarters you do not have.
+
+## Workflow — bootstrap your OS in one afternoon
+
+1. **Context files** — company, product, team, goals, constraints (five files beats zero; PM OS pattern).
+2. **One workflow** — pick the motion you repeat most (e.g. discovery → hypothesis, or plan → implement → verify).
+3. **Three skills** — encode that workflow as invocable skills, not chat prompts.
+4. **One MCP** — connect the system of record you copy-paste from most (issues or docs first).
+5. **Memory rule** — one capture habit with confirmation before writes (`/capture-memory` pattern).
+6. **Human gates** — list what agents never merge alone (Chapter 10).
+7. **Audit monthly** — which loops produced artifacts the *next* session actually loaded?
+
+## Tooling
+
+Packaged OS products and open patterns — replace as the market moves:
+
+- [AI PM OS](https://www.prodmgmt.world/ai-pm-os) — PM workspace for Claude Code, Cowork, Cursor
+- [Remy](https://goremy.ai/) — product agent from conversation to production and beyond
+- [Business Engineer Agent OS](https://businessengineer.ai/p/the-business-engineer-agent-os) — harness workshop (Cuofano)
+- Cursor skills + MCP catalog — your editor's native OS primitives
+
+## Common mistakes
+
+- **200 prompts, zero routing** — library without an OS is still a graveyard.
+- **Cron without artifacts** — scheduled personal habit, not compounding system.
+- **Re-explaining context** — proof memory is missing, not that the model is dumb.
+- **Coding agent as entire OS** — fast walls, no house, no institutional recall.
+- **Buying an OS and skipping context files** — generic PM advice returns immediately.
+
+## Scenario (composite)
+
+A solo product engineer pasted company context into ChatGPT twice a day for a month — fast docs, zero trail. They moved to Cursor with five context files, three skills (problem statement, PRD review, stakeholder prep), and GitHub MCP. The second discovery sprint reused JTBD clusters from the first without re-synthesis. That is compound, not convenience.
+
+A team bought Remy for a greenfield app and kept Notion for strategy. The product shipped; roadmap and analytics stayed in Remy's loop while company strategy stayed in Notion — **two OSes, one boundary doc**. Worked because they named which system owned which truth.
+
+## Falsify this
+
+- You still re-paste product context more than twice a week.
+- Last month's best workflow lives only in a chat export.
+- Automations run but no file, issue, or decision log updates.
+- You cannot name your five loops, skills, tools, MCPs, and agents — the stack is accidental.
+- "We're AI-native" means everyone picked their own chatbot.
+
+## Further reading
+
+- Chapter 00 — Principles (artifacts over vibes)
+- Chapter 01 — Mindset (product engineer vs software engineer)
+- Chapter 10 — Agentic development (human gates)
+- Chapter 17 — Teams and governance (organizational compound)
+- [Harness engineering — Alex Ker](https://x.com/thealexker/status/2076741193367761378)

@@ -2,6 +2,13 @@
 
 Handbook version history. The live page mirrors this at [/changelog](https://ai-native-product-building.vercel.app/changelog).
 
+## 1.4.0 — 2026-07-14
+
+- New chapter **Product engineering OS** — loops, skills, tools, MCPs, agents; personal vs organizational compound
+- Fixed phase listings (Foundations, Ship were missing from homepage and about)
+- Resources: AI PM OS, Remy, harness engineering (Alex Ker), Business Engineer Agent OS, Builder-PM Manifesto
+- Product engineer trail includes OS chapter; glossary terms for product engineering OS and harness
+
 ## 1.3.1 — 2026-07-12
 
 - Pagefind search in header — ⌘K / Ctrl+K

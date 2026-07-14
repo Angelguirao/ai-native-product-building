@@ -8,6 +8,18 @@ export type GlossaryTerm = {
 /** Handbook glossary — terms mapped to defining chapters. */
 export const glossaryTerms: GlossaryTerm[] = [
   {
+    id: "product-engineering-os",
+    term: "Product engineering OS",
+    def: "Loops, skills, tools, MCPs, and agents wired with memory and frameworks — compounding work the organization keeps, not scattered chat.",
+    chapters: ["11-product-engineering-os"],
+  },
+  {
+    id: "harness",
+    term: "Harness",
+    def: "The wrapper around a model that compresses context, team rules, and tool access into replicable workflows — what you choose or build, not the model itself.",
+    chapters: ["11-product-engineering-os"],
+  },
+  {
     id: "iteration-bet",
     term: "Iteration bet",
     def: "A written X/Y/Z release — belief, smallest shippable change, and falsifier — so revision stays intentional.",
