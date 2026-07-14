@@ -146,6 +146,19 @@ export const handbookResources: HandbookResource[] = [
     ],
   },
   {
+    id: "lennys-newsletter-podcast-data",
+    title: "Lenny's Newsletter & Podcast Data",
+    url: "https://github.com/LennysNewsletter/lennys-newsletterpodcastdata",
+    kind: "repo",
+    note: "Free PM practitioner corpus — 50 podcast transcripts + 10 posts in markdown; index.json metadata; starter MCP at lennysdata.com.",
+    chapters: [
+      "03-discovery",
+      "11-product-engineering-os",
+      "15-iteration",
+      "17-teams",
+    ],
+  },
+  {
     id: "ai-pm-os",
     title: "AI PM OS",
     url: "https://www.prodmgmt.world/ai-pm-os",

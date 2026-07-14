@@ -18,4 +18,4 @@ export type CatalogPhase = {
   lessons: CatalogLesson[];
 };
 
-export const handbookVersion = "1.4.0";
+export const handbookVersion = "1.4.1";
