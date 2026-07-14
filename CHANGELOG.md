@@ -2,6 +2,10 @@
 
 Handbook version history. The live page mirrors this at [/changelog](https://ai-native-product-building.vercel.app/changelog).
 
+## 1.4.3 — 2026-07-14
+
+- Fix missing spaces around inline links after HTML compression (home, about, resources)
+
 ## 1.4.2 — 2026-07-14
 
 - Team lead trail includes **Product engineering OS** chapter (loops, skills, MCPs, agents before architecture governance)
