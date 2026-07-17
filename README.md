@@ -18,16 +18,6 @@ Inspired by the essay rhythm of [Making Software](https://www.makingsoftware.com
 - **Maturity** — chapters labeled `shipped` or `refined`; progress bar counts depth, not just existence
 - **Decisions** — [`/decisions`](https://ai-native-product-building.vercel.app/decisions) registry for quick reference
 - **Trails** — role-based reading paths at [`/trails`](https://ai-native-product-building.vercel.app/trails)
-- **Publication firewall** — public site links only; private synthesis stays in brain
-
-## Stack
-
-| Layer | Owner |
-|-------|--------|
-| Drafts & resources | `brain` (folio, private) |
-| Published chapters | this repo (`content` → Astro site) |
-| Distilled principles | `footnotes` (spin-outs) |
-| Pointer / context | `tbd` mesh |
 
 ## Develop
 
