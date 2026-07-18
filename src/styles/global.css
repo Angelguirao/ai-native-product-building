@@ -1082,23 +1082,26 @@ summary:focus-visible {
   flex-direction: column;
   gap: 0.35rem;
   height: 100%;
-  padding: 1.1rem 1.2rem;
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  background: #fff;
+  padding: 1.15rem 1.25rem;
+  border: 1px solid color-mix(in srgb, var(--border) 45%, transparent);
+  border-radius: var(--radius-card);
+  background: color-mix(in srgb, var(--surface) 40%, transparent);
   text-decoration: none;
   color: inherit;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
 }
 
 .entry-card:hover {
-  border-color: var(--accent);
-  background: var(--accent-soft);
+  border-color: color-mix(in srgb, var(--accent) 40%, var(--border));
+  background: color-mix(in srgb, var(--accent-soft) 35%, transparent);
+  box-shadow: var(--shadow-panel);
 }
 
 .entry-card-title {
   font-family: var(--display);
   font-style: italic;
-  font-size: 1.05rem;
+  font-weight: 400;
+  font-size: 1.2rem;
   color: var(--text);
 }
 
