@@ -13,6 +13,7 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@angelguirao/personal-tokens": "file:./packages/personal-tokens",
     "@astrojs/mdx": "^7.0.2",
     "astro": "^7.0.7",
     "astro-pagefind": "^2.0.1",

@@ -1,14 +1,15 @@
+@import "@angelguirao/personal-tokens/tokens.css";
+@import "@angelguirao/personal-tokens/primitives.css";
+
 :root {
-  --bg: #f4efe6;
-  --text: #2a2318;
-  --muted: #6b6358;
-  --accent: #b85c38;
-  --accent-soft: #f0e4dc;
-  --border: #ddd4c4;
-  --surface: #faf6f0;
+  /* Local aliases used throughout this handbook (map onto personal-tokens). */
+  --bg: var(--background);
+  --text: var(--foreground);
   --mono: ui-monospace, "Cascadia Code", "Segoe UI Mono", monospace;
-  --serif: Georgia, "Iowan Old Style", "Palatino Linotype", serif;
-  --display: Georgia, "Iowan Old Style", serif;
+  --font-display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --font-body: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --serif: var(--font-body);
+  --display: var(--font-display);
 }
 
 * {
