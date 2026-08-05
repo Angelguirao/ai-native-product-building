@@ -1,10 +1,13 @@
 # @angelguirao/personal-tokens
 
-Cream / serif personal-surface tokens for **tbd**, **PersonalOS**, **AI-Native Product Building**, and **AIE Sessions**.
+**LifeOS Industrial** tokens for **tbd**, **PersonalOS**, **AI-Native Product Building**, and **AIE Sessions**.
+
+Cool zinc neutrals + rare amber. No cream / serif / terracotta.
 
 - Holzen uses `@holzen/design-tokens` (Nox) — do not mix.
 - Contract: [`docs/PERSONAL-SURFACE-TOKENS.md`](../../docs/PERSONAL-SURFACE-TOKENS.md)
-- ADR: [`personal-agent/docs/adrs/004-shared-personal-surface.md`](../../personal-agent/docs/adrs/004-shared-personal-surface.md)
+- Visual law: [`personal-agent/DESIGN.md`](../../personal-agent/DESIGN.md)
+- ADR: [`personal-agent/docs/adrs/014-lifeos-industrial-surface.md`](../../personal-agent/docs/adrs/014-lifeos-industrial-surface.md)
 
 ## Exports
 
@@ -21,8 +24,9 @@ Cream / serif personal-surface tokens for **tbd**, **PersonalOS**, **AI-Native P
 | `.personal-soft-panel` | Nested / secondary panel |
 | `.personal-sheet` | Review modal / bottom sheet |
 | `.personal-eyebrow` | Section labels (Orient, Experiment) |
-| `.personal-display-title` | Italic display titles |
+| `.personal-display-title` | Space Grotesk display titles (upright) |
 | `.personal-quiet` | Supporting body line |
+| `.personal-mono` | JetBrains Mono operational data |
 
 ## Sync
 
@@ -34,4 +38,4 @@ node scripts/sync-personal-tokens.mjs
 
 ## Fonts
 
-Apps load Cormorant Garamond + Source Serif 4 via `next/font` and map them in local `@theme inline` to `--font-display` / `--font-body`.
+Apps load **Space Grotesk** + **DM Sans** + **JetBrains Mono** via `next/font` and map them in local `@theme inline` to `--font-display` / `--font-body` / `--font-mono`.
