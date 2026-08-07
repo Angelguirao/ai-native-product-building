@@ -2,12 +2,12 @@
 @import "@angelguirao/personal-tokens/primitives.css";
 
 :root {
-  /* Local aliases — LifeOS Industrial type + personal-tokens color. */
+  /* Codex identity — Literata + IBM Plex Mono; zinc from personal-tokens. */
   --bg: var(--background);
   --text: var(--foreground);
-  --mono: "JetBrains Mono", ui-monospace, monospace;
-  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
-  --font-body: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, monospace;
+  --font-display: Literata, Georgia, "Times New Roman", serif;
+  --font-body: Literata, Georgia, "Times New Roman", serif;
   --serif: var(--font-body);
   --display: var(--font-display);
 }
@@ -55,7 +55,7 @@ a {
   font-weight: 600;
   font-family: var(--display);
   font-size: 1.05rem;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
 }
 
 .site-nav {
@@ -98,9 +98,9 @@ a {
 .hero-title {
   font-family: var(--display);
   font-size: clamp(2.6rem, 8vw, 4.2rem);
-  font-weight: 600;
+  font-weight: 500;
   font-style: normal;
-  line-height: 1.15;
+  line-height: 1.2;
   margin: 0 0 1rem;
   letter-spacing: -0.02em;
 }
@@ -116,7 +116,7 @@ a {
 }
 
 .hero-title.personal-display-title {
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .panel {
