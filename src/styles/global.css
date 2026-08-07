@@ -2,12 +2,12 @@
 @import "@angelguirao/personal-tokens/primitives.css";
 
 :root {
-  /* Local aliases used throughout this handbook (map onto personal-tokens). */
+  /* Local aliases — LifeOS Industrial type + personal-tokens color. */
   --bg: var(--background);
   --text: var(--foreground);
-  --mono: ui-monospace, "Cascadia Code", "Segoe UI Mono", monospace;
-  --font-display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
-  --font-body: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --mono: "JetBrains Mono", ui-monospace, monospace;
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "DM Sans", ui-sans-serif, system-ui, sans-serif;
   --serif: var(--font-body);
   --display: var(--font-display);
 }
@@ -24,13 +24,13 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
-  font-family: var(--serif);
-  line-height: 1.65;
+  font-family: var(--font-body);
+  line-height: 1.55;
   font-size: 1.05rem;
 }
 
 a {
-  color: var(--accent);
+  color: var(--foreground);
 }
 
 .site-header {
@@ -49,12 +49,13 @@ a {
 }
 
 .site-brand {
-  color: var(--accent);
+  color: var(--foreground);
   text-decoration: none;
-  font-style: italic;
-  font-weight: 400;
+  font-style: normal;
+  font-weight: 600;
   font-family: var(--display);
   font-size: 1.05rem;
+  letter-spacing: -0.02em;
 }
 
 .site-nav {
@@ -67,12 +68,12 @@ a {
 .site-nav a {
   color: var(--muted);
   text-decoration: none;
-  font-style: italic;
+  font-style: normal;
 }
 
 .site-nav a:hover,
 .site-nav a[aria-current="page"] {
-  color: var(--accent);
+  color: var(--foreground);
 }
 
 .site-main {
@@ -97,9 +98,9 @@ a {
 .hero-title {
   font-family: var(--display);
   font-size: clamp(2.6rem, 8vw, 4.2rem);
-  font-weight: 300;
-  font-style: italic;
-  line-height: 1.05;
+  font-weight: 600;
+  font-style: normal;
+  line-height: 1.15;
   margin: 0 0 1rem;
   letter-spacing: -0.02em;
 }
@@ -115,7 +116,7 @@ a {
 }
 
 .hero-title.personal-display-title {
-  font-weight: 300;
+  font-weight: 600;
 }
 
 .panel {
@@ -221,7 +222,7 @@ a {
 .progress-bar > span {
   display: block;
   height: 100%;
-  background: linear-gradient(90deg, var(--accent), #8a4530);
+  background: var(--primary);
   border-radius: inherit;
 }
 
@@ -255,7 +256,7 @@ a {
 
 .catalog-phase summary::before {
   content: "▸";
-  color: var(--accent);
+  color: var(--muted);
   transition: transform 0.15s ease;
 }
 
@@ -264,7 +265,7 @@ a {
 }
 
 .phase-label {
-  font-style: italic;
+  font-style: normal;
   color: var(--text);
   font-family: var(--display);
   font-size: 0.95rem;
@@ -296,7 +297,7 @@ a {
 }
 
 .catalog-lesson:hover {
-  background: var(--accent-soft);
+  background: color-mix(in srgb, var(--border) 30%, var(--surface));
 }
 
 .catalog-lesson.is-muted {
@@ -306,7 +307,7 @@ a {
 }
 
 .lesson-title {
-  font-style: italic;
+  font-style: normal;
   flex: 1 1 12rem;
 }
 
@@ -321,8 +322,8 @@ a {
 }
 
 .status-shipped {
-  border-color: var(--accent);
-  color: var(--accent);
+  border-color: var(--primary);
+  color: var(--foreground);
 }
 
 .status-draft {
@@ -386,7 +387,7 @@ a {
 }
 
 .chapter-nav-link:hover {
-  border-color: var(--accent);
+  border-color: var(--border);
 }
 
 .chapter-nav-prev {
@@ -407,7 +408,7 @@ a {
 
 .chapter-nav-title {
   font-family: var(--display);
-  font-style: italic;
+  font-style: normal;
   color: var(--text);
 }
 
@@ -442,7 +443,7 @@ a {
 }
 
 .decision-card-head h2 a:hover {
-  color: var(--accent);
+  color: var(--foreground);
 }
 
 .decision-card-meta {
@@ -455,7 +456,7 @@ a {
 .decision-card-caption {
   font-size: 0.95rem;
   color: var(--muted);
-  font-style: italic;
+  font-style: normal;
   margin: 0.75rem 0 0;
 }
 
@@ -482,7 +483,7 @@ a {
 }
 
 .trail-card:hover {
-  border-color: var(--accent);
+  border-color: var(--border);
 }
 
 .trail-card h2 {
@@ -507,7 +508,7 @@ a {
 .trail-meta {
   font-family: var(--mono);
   font-size: 0.72rem;
-  color: var(--accent);
+  color: var(--muted);
   margin: 0.75rem 0 0;
 }
 
@@ -532,13 +533,13 @@ a {
 }
 
 .trail-step:hover {
-  border-color: var(--accent);
+  border-color: var(--border);
 }
 
 .trail-step-num {
   font-family: var(--mono);
   font-size: 0.78rem;
-  color: var(--accent);
+  color: var(--muted);
   min-width: 1.5rem;
 }
 
@@ -618,13 +619,13 @@ a {
 
 .resource-page-head a {
   text-decoration: none;
-  font-style: italic;
+  font-style: normal;
   font-family: var(--display);
   color: var(--text);
 }
 
 .resource-page-head a:hover {
-  color: var(--accent);
+  color: var(--foreground);
 }
 
 .resource-chapters {
@@ -654,8 +655,8 @@ a {
 .chapter-head h1 {
   font-family: var(--display);
   font-size: clamp(1.85rem, 5vw, 2.5rem);
-  font-weight: 400;
-  font-style: italic;
+  font-weight: 600;
+  font-style: normal;
   line-height: 1.2;
   margin: 0 0 0.75rem;
 }
@@ -681,7 +682,7 @@ a {
 .prose h3 {
   font-family: var(--display);
   font-size: 1.15rem;
-  font-style: italic;
+  font-style: normal;
   font-weight: 400;
   margin: 1.5rem 0 0.5rem;
 }
@@ -714,7 +715,7 @@ a {
   font-size: 0.65rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--muted);
   margin: 0 0 0.5rem;
 }
 
@@ -723,7 +724,7 @@ a {
   font-size: 0.72rem;
   color: var(--muted);
   margin: 0.75rem 0 0;
-  font-style: italic;
+  font-style: normal;
 }
 
 .decision {
@@ -773,7 +774,7 @@ a {
 
 .glossary-list dt {
   font-family: var(--display);
-  font-style: italic;
+  font-style: normal;
   font-size: 1.1rem;
   margin-bottom: 0.35rem;
 }
@@ -789,7 +790,7 @@ a {
 
 .glossary-letter {
   font-family: var(--display);
-  font-style: italic;
+  font-style: normal;
   font-size: 1.5rem;
   font-weight: 400;
   margin: 0 0 0.75rem;
@@ -815,8 +816,8 @@ a {
 }
 
 .glossary-jump a:hover {
-  color: var(--accent);
-  border-color: var(--accent);
+  color: var(--foreground);
+  border-color: var(--border);
 }
 
 .glossary-chapters {
@@ -860,13 +861,13 @@ a {
 
 .chapter-glossary-list a {
   font-family: var(--display);
-  font-style: italic;
+  font-style: normal;
   text-decoration: none;
   color: var(--text);
 }
 
 .chapter-glossary-list a:hover {
-  color: var(--accent);
+  color: var(--foreground);
 }
 
 .chapter-glossary-meta {
@@ -880,7 +881,7 @@ a {
   --pf-border: 1px solid var(--border);
   --pf-border-radius: 4px;
   --pf-text-color: var(--muted);
-  --pf-primary: var(--accent);
+  --pf-primary: var(--primary);
   margin-right: 0.25rem;
 }
 
@@ -946,8 +947,8 @@ a {
   top: 0;
   z-index: 200;
   padding: 0.5rem 1rem;
-  background: var(--accent);
-  color: #fff;
+  background: var(--primary);
+  color: var(--ink-inverse, #fafafa);
   font-family: var(--mono);
   font-size: 0.78rem;
   text-decoration: none;
@@ -960,7 +961,7 @@ a {
 
 a:focus-visible,
 summary:focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--primary);
   outline-offset: 2px;
 }
 
@@ -991,12 +992,12 @@ summary:focus-visible {
 }
 
 .breadcrumb a:hover {
-  color: var(--accent);
+  color: var(--foreground);
 }
 
 .breadcrumb-current {
   color: var(--text);
-  font-style: italic;
+  font-style: normal;
   font-family: var(--display);
 }
 
@@ -1034,12 +1035,12 @@ summary:focus-visible {
   font-size: 0.9rem;
   color: var(--text);
   text-decoration: none;
-  font-style: italic;
+  font-style: normal;
   font-family: var(--display);
 }
 
 .chapter-toc a:hover {
-  color: var(--accent);
+  color: var(--foreground);
 }
 
 .chapter-related {
@@ -1092,14 +1093,14 @@ summary:focus-visible {
 }
 
 .entry-card:hover {
-  border-color: color-mix(in srgb, var(--accent) 40%, var(--border));
-  background: color-mix(in srgb, var(--accent-soft) 35%, transparent);
+  border-color: var(--border);
+  background: color-mix(in srgb, var(--border) 25%, var(--surface));
   box-shadow: var(--shadow-panel);
 }
 
 .entry-card-title {
   font-family: var(--display);
-  font-style: italic;
+  font-style: normal;
   font-weight: 400;
   font-size: 1.2rem;
   color: var(--text);
@@ -1151,13 +1152,13 @@ summary:focus-visible {
 }
 
 .featured-card:hover {
-  border-color: var(--accent);
-  background: var(--accent-soft);
+  border-color: var(--border);
+  background: color-mix(in srgb, var(--border) 30%, var(--surface));
 }
 
 .featured-card-title {
   font-family: var(--display);
-  font-style: italic;
+  font-style: normal;
 }
 
 .catalog-cta {
@@ -1196,7 +1197,7 @@ summary:focus-visible {
 
 .site-footer-nav a:hover,
 .site-footer-nav a[aria-current="page"] {
-  color: var(--accent);
+  color: var(--foreground);
 }
 
 .decisions-jump {
@@ -1231,7 +1232,7 @@ summary:focus-visible {
 
 .decisions-phase-title {
   font-family: var(--display);
-  font-style: italic;
+  font-style: normal;
   font-weight: 400;
   font-size: 1.35rem;
   margin: 0 0 1rem;
@@ -1250,7 +1251,7 @@ summary:focus-visible {
 }
 
 .decision-card-head h3 a:hover {
-  color: var(--accent);
+  color: var(--foreground);
 }
 
 .prose table {
